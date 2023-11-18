@@ -6,27 +6,28 @@
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:29:05 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/10 18:29:07 by abelov           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:23:59 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-static void	ft_revstr(char *tab, size_t size)
+char *ft_uitoa_buf(unsigned int abs,  char *buf, size_t length)
 {
-	char	*head;
-	char	*tail;
-	char	tmp;
 
-	head = tab;
-	tail = tab + size - 1;
-	while (head <= tail)
+	char				*ptr;
+	unsigned int const	decimal_radix = 10;
+
+	ptr = buf + length - 1;
+	*ptr-- = '\0';
+	while (abs >= decimal_radix)
 	{
-		tmp = *head;
-		*head++ = *tail;
-		*tail-- = tmp;
+		*ptr-- = (abs % decimal_radix) + '0';
+		abs /= decimal_radix;
 	}
+	*ptr-- = abs + '0';
+	return (buf);
 }
 
 static size_t	get_int_buf_size(int nb)
@@ -45,27 +46,21 @@ static size_t	get_int_buf_size(int nb)
 	return (++size);
 }
 
-static void	ft_itoa_buf(int nb, char *buf, size_t length)
+char	*ft_itoa_buf(int nb, char *buf, size_t length)
 {
-	unsigned int		r;
-	unsigned int const	decimal_radix = 10;
+	const char			*save = buf;
+	unsigned int		abs;
 	int const			mask = nb >> (sizeof(int) * CHAR_BIT - 1);
 
-	r = (nb + mask) ^ mask;
-	while (r >= decimal_radix)
-	{
-		ft_strlcat(buf, (char [2]){(r % decimal_radix) + '0', '\0'}, length);
-		r /= decimal_radix;
-	}
-	ft_strlcat(buf, (char [2]){(r + '0'), '\0'}, length);
-	if (nb < 0)
-		ft_strlcat(buf, (char [2]){'-', '\0'}, length);
-	ft_revstr(buf, --length);
+	abs = (nb + mask) ^ mask;
+	if (nb < 0 && length--)
+		*buf++ = '-';
+	ft_uitoa_buf(abs, buf, length);
+	return ((char *)save);
 }
 
 /**
- * https://stackoverflow.com/questions
- * /25848815/why-enough-is-enough-storing-an-int-in-a-char-array
+ * https://stackoverflow.com/questions/25848815/
  * Allocates (with malloc(3)) and returns a string representing the integer
  * received as an argument.
  *
@@ -81,6 +76,5 @@ char	*ft_itoa(int nb)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, buf_size);
-	ft_itoa_buf(nb, buf, buf_size);
-	return (buf);
+	return (ft_itoa_buf(nb, buf, buf_size));
 }

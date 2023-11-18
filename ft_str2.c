@@ -22,7 +22,7 @@
  */
 char	*ft_strchr(const char *s, int chr)
 {
-	char c;
+	char	c;
 
 	c = (char )chr;
 	while (*s && (*s != c))
@@ -39,7 +39,7 @@ char	*ft_strchr(const char *s, int chr)
 char	*ft_strrchr(const char *s, int chr)
 {
 	const char	*save = s;
-	char c;
+	char		c;
 
 	c = (char )chr;
 	while (*s)
@@ -134,11 +134,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	lenstr = ft_strlen(s);
 	if (!lenstr || (start > lenstr) || !len)
-		return ((char*)ft_calloc(1, sizeof(char)));
+		return ((char *)ft_calloc(1, sizeof(char)));
 	remainder = lenstr - start;
 	if (len < remainder)
 		remainder = len;
-	new = ((char*)ft_calloc(remainder + 1, sizeof(char)));
+	new = ((char *)ft_calloc(remainder + 1, sizeof(char)));
 	if (!new)
 		return (NULL);
 	ft_strlcat(new, (s + start), remainder + 1);

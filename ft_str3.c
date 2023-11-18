@@ -6,7 +6,7 @@
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:26:51 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/10 18:26:55 by abelov           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:28:53 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*new;
 	size_t	start;
 	size_t	stop;
-	size_t 	lenstr;
+	size_t	lenstr;
 
 	if (!s1)
 		return (NULL);
 	lenstr = ft_strlen(s1);
 	if (lenstr <= 0)
-		return ((char*)ft_calloc(1, sizeof(char)));
+		return ((char *)ft_calloc(1, sizeof(char)));
 	start = 0;
 	if (ft_strlen(set) <= 0)
 		return (ft_strdup((char *)s1));
@@ -88,7 +88,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (ft_strchr(set, s1[stop]) && stop)
 		stop--;
 	if (stop < start)
-		return ((char*)ft_calloc(1, sizeof(char)));
+		return ((char *)ft_calloc(1, sizeof(char)));
 	new = ft_substr(s1, start, stop - start + 1);
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 22:26:24 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/17 22:26:27 by abelov           ###   ########.fr       */
+/*   Updated: 2023/11/20 17:48:03 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /**
  * Counts the number of nodes in a list.
  */
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	int size;
+	int	size;
 
 	if (!lst)
 		return (0);
@@ -35,7 +35,7 @@ int ft_lstsize(t_list *lst)
  * the function 'del' given as a parameter and free the node.
  * The memory of 'next' must not be freed.
  */
-void ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
@@ -52,7 +52,7 @@ void ft_lstdelone(t_list *lst, void (*del)(void *))
  * 		lst: The address of a pointer to a node.
  * 		del: The address of the function used to delete the content of the node.
  */
-void ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*current;
 	t_list	*next;
@@ -77,7 +77,7 @@ void ft_lstclear(t_list **lst, void (*del)(void *))
  * 		lst: The address of a pointer to a node.
  * 		f: The address of the function used to iterate on the list.
  */
-void ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 		return ;
@@ -101,7 +101,7 @@ void ft_lstiter(t_list *lst, void (*f)(void *))
  * 		del: The address of the function used to delete the content
  * 			of a node if needed.
  */
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
 	t_list	*head;

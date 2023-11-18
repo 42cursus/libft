@@ -43,6 +43,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int nb);
+char	*ft_itoa_buf(int nb, char *buf, size_t length);
+char	*ft_uitoa_buf(unsigned int abs,  char *buf, size_t length);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

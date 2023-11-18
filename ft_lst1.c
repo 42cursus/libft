@@ -6,7 +6,7 @@
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:19:25 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/15 21:19:28 by abelov           ###   ########.fr       */
+/*   Updated: 2023/11/18 20:24:07 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 /**
  * Adds the node 'new' at the end of the list.
  */
-void	ft_lstadd_back(t_list **alst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if (alst)
+	if (lst)
 	{
 		if (*alst)
 		{
-			last = ft_lstlast(*alst);
+			last = ft_lstlast(*lst);
 			last->next = new;
 		}
 		else
-			*alst = new;
+			*lst = new;
 	}
 }
 
