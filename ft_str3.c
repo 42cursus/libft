@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:26:51 by abelov            #+#    #+#             */
 /*   Updated: 2023/11/18 20:28:53 by abelov           ###   ########.fr       */
@@ -127,10 +127,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s || !f)
 		return (NULL);
-	i = 0;
 	new = ft_strdup((char *)s);
 	if (!new)
 		return (NULL);
+	i = 0;
 	while (new[i])
 	{
 		new[i] = f(i, new[i]);
