@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:44:05 by abelov            #+#    #+#             */
 /*   Updated: 2023/11/02 17:44:07 by abelov           ###   ########.fr       */

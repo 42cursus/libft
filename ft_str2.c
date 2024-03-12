@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:13:01 by abelov            #+#    #+#             */
 /*   Updated: 2023/11/04 14:13:03 by abelov           ###   ########.fr       */

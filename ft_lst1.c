@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:19:25 by abelov            #+#    #+#             */
 /*   Updated: 2023/11/18 20:24:07 by abelov           ###   ########.fr       */
