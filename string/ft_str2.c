@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isctype.c                                       :+:      :+:    :+:   */
+/*   ft_str2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 15:04:01 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/18 20:23:45 by abelov           ###   ########.fr       */
+/*   Created: 2023/12/18 07:10:54 by abelov            #+#    #+#             */
+/*   Updated: 2023/12/18 07:10:55 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
-{
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
-}
+#include "libft.h"
 
-int	ft_isdigit(int c)
+char	*ft_empty_string(size_t length)
 {
-	return ('0' <= c && c <= '9');
-}
+	char			*new;
+	unsigned char	*ptr;
 
-int	ft_isalnum(int c)
-{
-	return (ft_isalpha(c) || ft_isdigit(c));
-}
-
-int	ft_isascii(int c)
-{
-	return (c >= 0 && c <= '\x7f');
-}
-
-int	ft_isprint(int c)
-{
-	return ((c >= '\x20') && (c < '\x7f'));
+	new = (char *)malloc(sizeof(char) * length + 1);
+	if (!new)
+		return (NULL);
+	ptr = (unsigned char *)new;
+	while (--length > 0)
+		*ptr++ = '\0';
+	return (new);
 }

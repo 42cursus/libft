@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -12,57 +13,48 @@
 
 NAME			:= libft.a
 CC				:= cc
-CFLAGS			:= -Wall -Wextra -Werror -g
+#CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
+INCLUDE_FLAGS	:= -I. -I./include -I/usr/include
+DEBUG_FLAGS		:= -g3 -gdwarf-3
+
+CTAGS			:= ctags
 LIB_COMMAND		:= ar rcs
 RM				:= /bin/rm
 
-SRC_FILES 		:= ft_atoi.c \
-					 ft_itoa.c \
-					 ft_bzero.c \
-					 ft_isctype.c \
-					 ft_mem.c \
-					 ft_fd1.c \
-					 ft_fd2.c \
-					 ft_strdup.c \
-					 ft_split.c \
-					 ft_str1.c \
-					 ft_str2.c \
-					 ft_str3.c \
-					 ft_calloc.c
+LIBFTSRCDIR		= $(CURDIR)
+SRCS	 		:=
+DIRS			:= gen io std string
 
-OBJ_DIR			=	obj
-OBJS			= $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
+include $(addsuffix /Makefile.mk,$(DIRS))
 
-ASM_FILES		= $(SRC_FILES:.c=.s)
-
-BONUS			= ft_lst1.c \
-					ft_lst2.c
-
-BOBJ			= $(BONUS:%.c=$(OBJ_DIR)/%.o)
-BONUS_ASM		= $(BONUS:.c=.s)
+BUILD_DIR		= build
+OBJS			= $(SRCS:%.c=%.o)
+BUILD_OBJS		= $(SRCS:%.c=$(BUILD_DIR)/%.o)
+ASM_FILES		= $(SRCS:.c=.s)
 
 all: $(NAME)
 
-$(OBJ_DIR):
-		mkdir -pv $(OBJ_DIR)
-$(OBJ_DIR)/%.o: %.c
-		$(CC) $(CFLAGS) -c $^ -o $@
+# We need this for the output to go in the right place.  It will default to
+# empty if make was configured to work with a cc that can't grok -c and -o
+# together.  You can't compile the C library with such a compiler.
+OUTPUT_OPTION	= -o $@
 
-bonus:	.bonus
+$(BUILD_DIR)/%.o:	%.c
+		@if [ ! -d $(@D) ]; then mkdir -pv $(@D); fi
+		$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $< -o $@
 
-.bonus: $(OBJS) $(BOBJ)
-		$(LIB_COMMAND) $(NAME) $(OBJS) $(BOBJ)
-		touch $@
-
-$(NAME): $(OBJ_DIR) $(OBJS)
-		$(LIB_COMMAND) $(NAME) $(OBJS)
+$(NAME): $(BUILD_OBJS)
+		$(LIB_COMMAND) $(NAME) $(BUILD_OBJS)
 
 clean:
-		$(RM) -rf $(OBJ_DIR) $(ASM_FILES) $(BONUS_ASM)
+		$(RM) -f $(OBJS) $(ASM_FILES)
 
 fclean: clean
-		$(RM) -f $(NAME) a.out .bonus
+		$(RM) -fr $(NAME) $(BUILD_DIR) a.out
 
 re: fclean all
 
-.PHONY: all clean flean re bonus
+norm:
+		@norminette $(SRCS)
+
+.PHONY: all clean flean re bonus $(BUILD_DIR)

@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
+/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:29:05 by abelov            #+#    #+#             */
 /*   Updated: 2023/11/18 20:23:59 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
-char *ft_uitoa_buf(unsigned int abs,  char *buf, size_t length)
+char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length)
 {
-
 	char				*ptr;
 	unsigned int const	decimal_radix = 10;
 
