@@ -23,7 +23,7 @@ RM				:= /bin/rm
 
 LIBFTSRCDIR		= $(CURDIR)
 SRCS	 		:=
-DIRS			:= gen io std string
+DIRS			:= ctype io list std string
 
 include $(addsuffix /Makefile.mk,$(DIRS))
 

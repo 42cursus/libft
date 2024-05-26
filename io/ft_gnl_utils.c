@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "gnl.h"
 
 int	lbchange(t_fp *fp, size_t newsize, int flag)
 {

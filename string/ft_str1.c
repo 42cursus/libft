@@ -28,6 +28,26 @@ size_t	ft_strlen(const char *s)
 }
 
 /**
+ * The ft_strchr() function returns a pointer to the first occurrence of the
+ * character c in the string s.
+ * It returns a pointer to the matched character or NULL if the character
+ * isn't found. The terminating null byte is considered part of the string,
+ * so that if c is specified as '\0', the function returns a pointer to the NULL
+ * terminator.
+ */
+char	*ft_strchr(const char *s, int chr)
+{
+	char	c;
+
+	c = (char )chr;
+	while (*s && (*s != c))
+		s++;
+	if (*s != c)
+		return (NULL);
+	return ((char *)s);
+}
+
+/**
  * The ft_strlcpy() function copies up to size - 1 characters
  * from the NUL-terminated string src to dst, NUL-terminating the result.
  * Returns the total length of the string tried to create (the length of src).
@@ -71,28 +91,4 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	if (dest_len >= osize)
 		return (osize + ft_strlen(src));
 	return (dest_len + ft_strlcpy(dest, src, osize - dest_len));
-}
-
-/**
- * The ft_toupper() function converts lowercase letters to uppercase.
- * Returns its uppercase equivalent, if an uppercase representation exists
- * in the current locale.  Otherwise, it returns c.
- */
-int	ft_toupper(int c)
-{
-	if (!((c >= 'a') && (c <= 'z')))
-		return (c);
-	return (c - 'a' + 'A');
-}
-
-/**
- * The ft_tolower() function converts uppercase letters to lowercase.
- * Returns its lowercase equivalent, if a lowercase representation exists
- * in the current locale.  Otherwise, returns c.
- */
-int	ft_tolower(int c)
-{
-	if (!((c >= 'A') && (c <= 'Z')))
-		return (c);
-	return (c - 'A' + 'a');
 }

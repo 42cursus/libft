@@ -10,16 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GNL_H
+# define GNL_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif //BUFFER_SIZE
 # include <limits.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 80
+# endif //BUFFER_SIZE
 
 # define OPTIMISTIC 80
 # define DO_SHRINK	0x0001		/* line buffered */
@@ -62,4 +63,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		lbchange(t_fp *fp, size_t newsize, int flag);
 void	*ft_reallocarray(void *ptr,
 						 size_t oldnmemb, size_t newnmemb, size_t size);
-#endif //GET_NEXT_LINE_H
+#endif //GNL_H

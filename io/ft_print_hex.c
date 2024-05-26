@@ -14,15 +14,13 @@
 
 size_t	get_hex_buf_size(unsigned long long int nb)
 {
-	ulong		size;
-	int const	hexadecimal_radix = 16;
+
+	unsigned long	size;
+	int const		hexadecimal_radix = 16;
 
 	size = !nb;
-	while (nb)
-	{
+	while (size++, nb)
 		nb /= hexadecimal_radix;
-		size++;
-	}
 	return (++size);
 }
 

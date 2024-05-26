@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ctype.h"
+
 int	ft_isalpha(int c)
 {
 	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
@@ -20,6 +22,11 @@ int	ft_isdigit(int c)
 	return ('0' <= c && c <= '9');
 }
 
+int		ft_isxdigit(int c)
+{
+	return (ft_isdigit(c) || (c >= 'A' && c <= 'F') ||(c >= 'a' && c <= 'f'));
+}
+
 int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
@@ -28,9 +35,4 @@ int	ft_isalnum(int c)
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= '\x7f');
-}
-
-int	ft_isprint(int c)
-{
-	return ((c >= '\x20') && (c < '\x7f'));
 }

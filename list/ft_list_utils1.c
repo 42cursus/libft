@@ -62,17 +62,17 @@ t_list	*ft_lstlast(t_list *lst)
 
 /**
  * Allocates (with malloc(3)) and returns a new node.
- * The member variable 'content' is initialized with the value of the parameter
- * 'content'. The variable 'next' is initialized to NULL.
+ * The member variable 'data' is initialized with the value of the parameter
+ * 'data'. The variable 'next' is initialized to NULL.
  */
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *data)
 {
 	t_list	*elem;
 
 	elem = (t_list *)malloc(sizeof(*elem));
 	if (!elem)
 		return (NULL);
-	elem->content = content;
+	elem->data = data;
 	elem->next = NULL;
 	return (elem);
 }

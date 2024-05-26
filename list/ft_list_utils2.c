@@ -31,7 +31,7 @@ int	ft_lstsize(t_list *lst)
 }
 
 /**
- * Takes as a parameter a node and frees the memory of the node's content using
+ * Takes as a parameter a node and frees the memory of the node's data using
  * the function 'del' given as a parameter and free the node.
  * The memory of 'next' must not be freed.
  */
@@ -39,7 +39,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
-	del(lst->content);
+	del(lst->data);
 	free(lst);
 }
 
@@ -50,7 +50,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
  *
  * Parameters:
  * 		lst: The address of a pointer to a node.
- * 		del: The address of the function used to delete the content of the node.
+ * 		del: The address of the function used to delete the data of the node.
  */
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
@@ -70,7 +70,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 }
 
 /**
- * Iterates the list 'lst' and applies the function 'f' on the content
+ * Iterates the list 'lst' and applies the function 'f' on the data
  * of each node.
  *
  * Parameters:
@@ -83,22 +83,22 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		return ;
 	while (lst->next)
 	{
-		f(lst->content);
+		f(lst->data);
 		lst = lst->next;
 	}
-	f(lst->content);
+	f(lst->data);
 }
 
 /**
- * Iterates the list 'lst' and applies the function 'f' on the content of
+ * Iterates the list 'lst' and applies the function 'f' on the data of
  * each node. Creates a new list resulting of the successive applications of
  * the function 'f'.
- * The 'del' function is used to delete the content of a node if needed.
+ * The 'del' function is used to delete the data of a node if needed.
  *
  * Parameters:
  * 		lst: The address of a pointer to a node.
  * 		f: The address of the function used to iterate on the list.
- * 		del: The address of the function used to delete the content
+ * 		del: The address of the function used to delete the data
  * 			of a node if needed.
  */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -110,14 +110,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst || !f || !del)
 		return (NULL);
 	current = lst;
-	new = ft_lstnew(f(current->content));
+	new = ft_lstnew(f(current->data));
 	if (!new)
 		return (NULL);
 	head = new;
 	current = lst->next;
 	while (current)
 	{
-		new->next = ft_lstnew(f(current->content));
+		new->next = ft_lstnew(f(current->data));
 		if (!new->next)
 		{
 			ft_lstclear(&head, del);
