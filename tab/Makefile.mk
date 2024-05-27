@@ -10,15 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-# string sources
-#VPATH   := $(VPATH):${LIBFTSRCDIR}/string
+FILES   = ft_get_tab_size.c \
+			ft_tab_any.c \
+			ft_tab_count_if.c \
+			ft_tab_foreach.c \
+			ft_tab_is_sort.c \
+			ft_tab_map.c \
+			ft_sort_string_tab.c \
+			ft_sort_string_tab_fun.c
 
-FILES   = ft_bzero.c \
-           ft_mem.c \
-           ft_split.c \
-           ft_str1.c \
-           ft_str2.c \
-           ft_strdup.c \
-           ft_strstr.c
-
-SRCS    += $(patsubst %.c,string/%.c,$(FILES))
+SRCS    += $(patsubst %.c,tab/%.c,$(FILES))

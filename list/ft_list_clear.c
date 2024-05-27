@@ -19,7 +19,7 @@
  *
  * Parameters:
  * 		list: The address of a first node.
- * 		del_fun: The address of the function used to delete the data data.
+ * 		del_fun: The address of the function used to delete the data content.
  */
 void	ft_list_clear(t_list *list, void (*del_fun)(void *))
 {

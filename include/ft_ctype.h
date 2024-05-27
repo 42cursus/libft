@@ -12,7 +12,7 @@
 
 #ifndef FT_CTYPE_H
 # define FT_CTYPE_H
-# include "ftdef.h"
+# include "ft_def.h"
 
 int	ft_isspace(int c);
 int	ft_isalpha(int c);

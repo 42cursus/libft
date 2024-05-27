@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_get_tab_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 00:39:51 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/26 22:16:45 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:15:01 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_def.h"
 
-void	ft_list_push_front(t_list **list, void *data)
+t_uint	ft_get_tab_size(void **tab)
 {
-	t_list	*new;
+	t_uint	size;
 
-	new = ft_list_create_elem(data);
-	if (!list || !new)
-		return ;
-	new->next = *list;
-	*list = new;
+	size = 0;
+	while (*tab && ++size)
+		tab++;
+	return (size);
 }

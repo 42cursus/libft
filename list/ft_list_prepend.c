@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_list_prepend.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 00:39:51 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/22 17:03:19 by abelov            #+#    #+#             */
+/*   Updated: 2024/03/22 17:03:20 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_push_front(t_list **list, void *data)
+/**
+ * Adds the node 'new' at the front of the list.
+ */
+void	ft_list_prepend(t_list **lst, t_list *new)
 {
-	t_list	*new;
-
-	new = ft_list_create_elem(data);
-	if (!list || !new)
+	if (!lst || !new)
 		return ;
-	new->next = *list;
-	*list = new;
+	new->next = *lst;
+	*lst = new;
 }

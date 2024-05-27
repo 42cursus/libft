@@ -17,7 +17,7 @@ void	ft_list_push_back(t_list **list, void *data)
 	t_list	*last;
 	t_list	*new;
 
-	new = ft_create_elem(data);
+	new = ft_list_create_elem(data);
 	if (!list || !new)
 		return ;
 	if (*list)

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_get_tab_size.c                              :+:      :+:    :+:   */
+/*   ft_tab_any.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 22:16:45 by abelov            #+#    #+#             */
-/*   Updated: 2024/03/26 22:16:46 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/20 23:01:07 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:27:38 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c12_tests.h"
+#include <stdbool.h>
+#include "ft_tab.h"
 
-t_uint	ft_get_tab_size(void **tab)
+int	ft_tab_any(void **tab, int (*f)(void *))
 {
-	t_uint	size;
+	t_uint	length;
+	int		i;
 
-	size = 0;
-	while (*tab && ++size)
-		tab++;
-	return (size);
+	i = 0;
+	length = ft_get_tab_size(tab);
+	if (!length)
+		return (false);
+	while (i < length)
+		if (f(tab[i++]))
+			return (true);
+	return (false);
 }

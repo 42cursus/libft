@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_at.c                                       :+:      :+:    :+:   */
+/*   ft_tab_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 20:08:46 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/20 22:33:02 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:29:02 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "ft_list.h"
+#include <stdlib.h>
 
 /**
- * returns the Nth element of the list,
- * assuming the first element of the list is when nbr equals 0.
+ * Function ft_map applies a function on all elements of the given ints array
+ * (in order) and returns an array of all the return values.
  */
-t_list	*ft_list_at(t_list *list, unsigned int nbr)
+int	*ft_tab_map(int *tab, int length, int (*f)(int))
 {
-	t_list	*current;
+	int	*new_array;
+	int	i;
 
-	if (!nbr)
-		return (list);
-	if (!list)
+	i = -1;
+	new_array = (int *)malloc (sizeof(int) * length);
+	if (!new_array || !length || !tab)
 		return (NULL);
-	current = list;
-	while (nbr && current->next)
-	{
-		current = current->next;
-		nbr--;
-	}
-	if (!nbr)
-		return (current);
-	return (NULL);
+	while (++i < length)
+		new_array[i] = f(tab[i]);
+	return (new_array);
 }

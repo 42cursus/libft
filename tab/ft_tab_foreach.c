@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftdef.h                                            :+:      :+:    :+:   */
+/*   ft_tab_foreach.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 03:05:10 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/21 03:05:10 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/20 22:12:33 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:28:05 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by andrei_belov on 5/21/24.
-//
+/**
+ * Function ft_foreach applies a function on all elements of the given array.
+ * This function will be applied following the array’s order.
+ */
+void	ft_tab_foreach(int *tab, int length, void (*f)(int))
+{
+	int	i;
 
-#ifndef FTDEF_H
-# define FTDEF_H
-# ifndef EOF
-#  define EOF (-1)
-# endif
-
-
-#endif //FTDEF_H
+	i = 0;
+	if (!tab || !length)
+		return ;
+	while (i < length)
+		f(tab[i++]);
+}

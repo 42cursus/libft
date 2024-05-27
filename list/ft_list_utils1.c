@@ -65,7 +65,7 @@ t_list	*ft_lstlast(t_list *lst)
  * The member variable 'data' is initialized with the value of the parameter
  * 'data'. The variable 'next' is initialized to NULL.
  */
-t_list	*ft_lstnew(void *data)
+t_list	*ft_list_create_elem(void *data)
 {
 	t_list	*elem;
 

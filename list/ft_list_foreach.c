@@ -13,7 +13,7 @@
 #include "ft_list.h"
 
 /**
- * Iterates the list 'list' and applies the function 'f' on the data
+ * Iterates the list 'list' and applies the function 'f' on the content
  * of each node.
  *
  * Parameters:

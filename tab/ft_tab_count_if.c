@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_tab_count_if.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 00:39:51 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/20 23:51:48 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:27:57 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-
-void	ft_list_push_front(t_list **list, void *data)
+/**
+ * Function t_count_if returns the number of elements of the array
+ * that return does not return 0 when passed to the function `f`
+ */
+int	ft_tab_count_if(void **tab, int length, int (*f)(void *))
 {
-	t_list	*new;
+	int	res;
+	int	i;
 
-	new = ft_list_create_elem(data);
-	if (!list || !new)
-		return ;
-	new->next = *list;
-	*list = new;
+	i = 0;
+	res = 0;
+	if (!tab || !length)
+		return (res);
+	while (i < length)
+		if (f(tab[i++]))
+			res++;
+	return (res);
 }

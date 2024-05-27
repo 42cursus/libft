@@ -10,12 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES   = ft_list_at.c \
+FILES   = ft_list_create_elem.c \
+			ft_list_at.c \
 			ft_list_clear.c \
 			ft_list_find.c \
 			ft_list_foreach.c \
 			ft_list_foreach_if.c \
 			ft_list_last.c \
+			ft_list_prepend.c \
 			ft_list_merge.c \
 			ft_list_new.c \
 			ft_list_push_back.c \

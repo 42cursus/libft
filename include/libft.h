@@ -21,9 +21,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "gnl.h"
-# include "ftdef.h"
+# include "ft_def.h"
 # include "ft_ctype.h"
 # include "ft_list.h"
+# include "ft_tab.h"
 # include "ft_string.h"
 
 void	ft_putchar_fd(char c, int fd);

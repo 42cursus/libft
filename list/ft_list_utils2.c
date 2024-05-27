@@ -110,14 +110,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst || !f || !del)
 		return (NULL);
 	current = lst;
-	new = ft_lstnew(f(current->data));
+	new = ft_list_create_elem(f(current->data));
 	if (!new)
 		return (NULL);
 	head = new;
 	current = lst->next;
 	while (current)
 	{
-		new->next = ft_lstnew(f(current->data));
+		new->next = ft_list_create_elem(f(current->data));
 		if (!new->next)
 		{
 			ft_lstclear(&head, del);
