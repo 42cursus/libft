@@ -45,12 +45,6 @@ static int	ft_list_swap(t_list *p1, t_list *p2)
 	return (true);
 }
 
-typedef struct s_iterator
-{
-	int	i;
-	int	j;
-}					t_iter;
-
 /**
  * `ft_list_sort` sorts the list's elements by ascending order
  * 	by comparing two elements by comparing their data with a function.

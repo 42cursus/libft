@@ -14,6 +14,16 @@
 # define FT_CTYPE_H
 # include "ft_def.h"
 
+typedef unsigned int	t_uint;
+typedef struct s_convert
+{
+	int				neg;
+	int				any;
+	unsigned long	acc;
+	int				cutlim;
+	unsigned long	cutoff;
+}	t_conv;
+
 int	ft_isspace(int c);
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);

@@ -13,16 +13,6 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static char	*ft_strcpy(char *dest, char *src)
-{
-	char *const	save = dest;
-
-	while (*src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (save);
-}
-
 char	*ft_strdup(char *src)
 {
 	char	*new;

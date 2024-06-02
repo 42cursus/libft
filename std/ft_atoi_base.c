@@ -13,8 +13,6 @@
 #include "ft_ctype.h"
 #include "ft_string.h"
 
-typedef unsigned int	t_uint;
-
 static t_uint	check_base_valid(char *base)
 {
 	char		*ptr;

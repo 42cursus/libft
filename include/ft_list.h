@@ -20,6 +20,12 @@ struct s_list
 	t_list	*next;
 };
 
+typedef struct s_iterator
+{
+	int	i;
+	int	j;
+}					t_iter;
+
 typedef struct s_list_swap
 {
 	t_list	*tmp;

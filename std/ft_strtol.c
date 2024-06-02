@@ -16,21 +16,12 @@
 #include <errno.h>
 #include "ft_ctype.h"
 
-typedef struct s_convert
-{
-	int				neg;
-	int				any;
-	unsigned long	acc;
-	int				cutlim;
-	unsigned long	cutoff;
-}	t_conv;
-
 static int		ft_strtol_check_base(int base, const char **str, int *c);
 static void		ft_strtol_do_convert(int base, t_conv *res, int c,
 					const char **str);
 static void		ft_strtol_check_limits(int base, int c, t_conv *res);
 static void		ft_strtol_check_result(t_conv *result, const char *nptr,
-					char **endptr, const char *saveptr);
+					char **endptr, char *saveptr);
 
 /**
  * Converts the initial portion of the string
@@ -39,23 +30,24 @@ static void		ft_strtol_check_result(t_conv *result, const char *nptr,
 long	ft_strtol(const char *nptr, char **endptr, register int base)
 {
 	int				c;
-	const char		*saveptr = nptr;
+	char			*saveptr;
 	t_conv *const	result = &(t_conv){.acc = 0, .any = 0, .neg = 1};
 
+	saveptr = (char *)nptr;
 	while (ft_isspace((unsigned char )*nptr))
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 		if (*++nptr == '-')
 			result->neg *= -1;
-	c = *nptr++;
+	c = (unsigned char )*nptr++;
 	base = ft_strtol_check_base(base, &nptr, &c);
 	ft_strtol_do_convert(base, result, c, &nptr);
 	ft_strtol_check_result(result, nptr, endptr, saveptr);
-	return (result->acc);
+	return ((long)result->acc);
 }
 
 void	ft_strtol_check_result(t_conv *result, const char *nptr,
-						char **endptr, const char *saveptr)
+						char **endptr, char *saveptr)
 {
 	if (result->any < 0)
 	{
@@ -70,7 +62,7 @@ void	ft_strtol_check_result(t_conv *result, const char *nptr,
 	{
 		*endptr = saveptr;
 		if (result->any)
-			*endptr = (nptr - 1);
+			*endptr = (char *)(nptr - 1);
 	}
 }
 

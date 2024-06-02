@@ -16,33 +16,25 @@
 #include <stdbool.h>
 #include "ft_ctype.h"
 
-typedef struct s_convert
-{
-	int				any;
-	int				neg;
-	unsigned long	acc;
-	int				cutlim;
-	unsigned long	cutoff;
-}	t_conv;
-
 int		ft_strtoul_check_base(int base, const char **str, int *c);
 void	ft_strtoul_do_convert(int base, t_conv *res, int c, const char **str);
 void	ft_strtoul_check_limits(int base, int c, t_conv *res);
 void	ft_strtoul_check_result(t_conv *result,
-			const char *nptr, char **endptr, const char *saveptr);
+			const char *nptr, char **endptr, char *saveptr);
 
 unsigned long	ft_strtoul(const char *nptr, char **endptr, int base)
 {
 	int				c;
-	const char		*saveptr = nptr;
+	char			*saveptr;
 	t_conv *const	result = &(t_conv){.acc = 0, .any = 0, .neg = 1};
 
+	saveptr = (char *)nptr;
 	while (ft_isspace((unsigned char )*nptr))
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 		if (*++nptr == '-')
 			result->neg = -1;
-	c = *nptr++;
+	c = (unsigned char )*nptr++;
 	base = ft_strtoul_check_base(base, &nptr, &c);
 	ft_strtoul_do_convert(base, result, c, &nptr);
 	ft_strtoul_check_result(result, nptr, endptr, saveptr);
@@ -50,7 +42,7 @@ unsigned long	ft_strtoul(const char *nptr, char **endptr, int base)
 }
 
 void	ft_strtoul_check_result(t_conv *result, const char *nptr, char **endptr,
-								const char *saveptr)
+								char *saveptr)
 {
 	if (result->any < 0)
 		result->acc = ULONG_MAX;
@@ -59,7 +51,7 @@ void	ft_strtoul_check_result(t_conv *result, const char *nptr, char **endptr,
 	{
 		*endptr = saveptr;
 		if (result->any)
-			*endptr = (nptr - 1);
+			*endptr = (char *)(nptr - 1);
 	}
 }
 

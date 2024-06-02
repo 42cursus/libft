@@ -31,7 +31,8 @@
 # define SMOD	0x2000		/* true => fgetln modified _p text */
 
 /* stdio buffers */
-typedef struct s_buf {
+typedef struct s_buf
+{
 	unsigned char	*_base;
 	int				_size;
 }	t_buf;
@@ -43,7 +44,8 @@ typedef struct s_buf {
  * read/write error has occurred, and an end-of-file indicator that records
  * whether the end of the file has been reached;
  */
-typedef struct s_io_file {
+typedef struct s_io_file
+{
 	int				_r;
 	void			*_cookie;
 	int				(*_close)(void*);
@@ -63,6 +65,5 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		lbchange(t_fp *fp, size_t newsize, int flag);
 void	*ft_reallocarray(void *ptr,
 			size_t oldnmemb, size_t newnmemb, size_t size);
-int		get_next_line2(int fd, char **save_ptr);
 
 #endif //GNL_H
