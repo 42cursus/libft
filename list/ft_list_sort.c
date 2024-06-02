@@ -78,9 +78,7 @@ void	ft_list_sort(t_list **list, int (*cmp)(void *, void *))
 		curr = head;
 		while (++(it->j) < size - it->i)
 		{
-			char * str1 = curr->next->data;
-			char * str2 = curr->next->next->data;
-			if (cmp(str1, str2) > 0)
+			if (cmp(curr->next->data, curr->next->next->data) > 0)
 				swapped = ft_list_swap(curr, curr->next);
 			curr = curr->next;
 		}

@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include "ft_list.h"
 
-static int ft_list_swap_data(t_list *left, t_list *right)
+static int	ft_list_swap_data(t_list *left, t_list *right)
 {
 	void	*tmp;
 
@@ -41,7 +41,7 @@ void	ft_list_reverse_fun(t_list *list)
 	middle = ft_list_at(list, size / 2);
 	while (++i < size / 2)
 	{
-		ft_list_swap_data(left, ft_list_at(middle, size/2 - i - 1));
+		ft_list_swap_data(left, ft_list_at(middle, size / 2 - i - 1));
 		left = left->next;
 	}
 }

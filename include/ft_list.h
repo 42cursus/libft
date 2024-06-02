@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst.h                                           :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 03:05:48 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/21 03:05:49 by abelov           ###   ########.fr       */
+/*   Updated: 2024/06/02 09:22:52 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LST_H
-# define FT_LST_H
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
 typedef struct s_list	t_list;
 struct s_list
@@ -47,18 +47,18 @@ t_list	*ft_list_at(t_list *list, unsigned int nbr);
 void	ft_list_reverse(t_list **list);
 void	ft_list_foreach(t_list *list, void (*f)(void *));
 void	ft_list_foreach_if(t_list *list, void (*f)(void *), void *data_ref,
-						   int (*cmp)(void *, void *));
+			int (*cmp)(void *, void *));
 t_list	*ft_list_find(t_list *list, void *data_ref,
-						int (*cmp)(void *, void *));
+			int (*cmp)(void *, void *));
 void	ft_list_remove_if(t_list **list, void *data_ref,
-						  int (*cmp)(void *, void *), void (*del_fun)(void *));
+			int (*cmp)(void *, void *), void (*del_fun)(void *));
 void	ft_list_prepend(t_list **lst, t_list *new);
 void	ft_list_merge(t_list **list1, t_list *list2);
 void	ft_list_sort(t_list **list, int (*cmp)(void *, void *));
 void	ft_list_reverse_fun(t_list *list);
 void	ft_sorted_list_insert(t_list **list, void *data,
-							  int (*cmp)(void *, void *));
+			int (*cmp)(void *, void *));
 void	ft_sorted_list_merge(t_list **list1, t_list *list2,
-							 int (*cmp)(void *, void *));
+			int (*cmp)(void *, void *));
 void	ft_list_reverse_fun(t_list *list);
-#endif //FT_LST_H
+#endif //FT_LIST_H

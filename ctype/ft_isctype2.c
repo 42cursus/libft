@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_ctype2.c                                        :+:      :+:    :+:   */
+/*   ft_isctype2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 02:57:28 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/21 02:57:31 by abelov           ###   ########.fr       */
+/*   Updated: 2024/06/02 08:54:21 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ctype.h"
-
-int	ft_isspace(int c)
-{
-	return ((c == ' ') || (c == '\t')
-			|| (c == '\n') || (c == '\v') || (c == '\f') || (c == '\r'));
-}
 
 int	ft_isprint(int c)
 {
@@ -32,7 +26,6 @@ int	ft_islower(int c)
 {
 	return ((c >= 'a') && (c <= 'z'));
 }
-
 
 /**
  * The ft_toupper() function converts lowercase letters to uppercase.

@@ -20,6 +20,8 @@ size_t	ft_strlen(const char *s);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strchr(const char *s, int chr);
 size_t	ft_strstr_fixed(char *haystack, char *words[]);
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strstr(char *str, char *to_find);
 char	*ft_empty_string(size_t length);
 void	ft_bzero(void *s, size_t n);

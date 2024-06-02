@@ -1,28 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ctype.h                                         :+:      :+:    :+:   */
+/*   ft_gnl2_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 03:01:19 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/21 03:01:20 by abelov           ###   ########.fr       */
+/*   Created: 2024/06/02 07:58:30 by abelov            #+#    #+#             */
+/*   Updated: 2024/06/02 08:02:33 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef FT_CTYPE_H
-# define FT_CTYPE_H
-# include "ft_def.h"
-
-int	ft_isspace(int c);
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-int	ft_isupper(int c);
-int	ft_islower(int c);
-int	ft_toupper(int c);
-int	ft_tolower(int c);
-
-#endif // FT_CTYPE_H

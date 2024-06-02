@@ -12,11 +12,11 @@
 
 #include <stdbool.h>
 
-int ft_string_tab_is_sort(char **tab, int(*f)(char *, char *))
+int	ft_string_tab_is_sort(char **tab, int (*f)(char *, char *))
 {
-	if(!tab || !*tab)
+	if (!tab || !*tab)
 		return (true);
-	if(!f)
+	if (!f)
 		return (false);
 	while (*++tab)
 		if (f(*(tab - 1), *(tab)) > 0)
@@ -27,14 +27,14 @@ int ft_string_tab_is_sort(char **tab, int(*f)(char *, char *))
 /**
  * returns 1 if the array is sorted and 0 if it isn't
  */
-int ft_tab_is_sort(int *tab, int length, int(*f)(int, int))
+int	ft_tab_is_sort(int *tab, int length, int (*f)(int, int))
 {
-	if(!tab || !length)
+	if (!tab || !length)
 		return (true);
-	if(!f)
+	if (!f)
 		return (false);
-	while(--length)
-		if(f(tab[length - 1], tab[length]) < 0)
+	while (--length)
+		if (f(tab[length - 1], tab[length]) < 0)
 			return (false);
 	return (true);
 }

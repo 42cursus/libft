@@ -15,15 +15,17 @@
 
 static t_list	*ft_lst_get_next(t_list *list, const t_list **list_ptr)
 {
-	static t_list *next = NULL;
+	static t_list	*next = NULL;
 
-	if(list)
+	if (list)
 		next = list;
 	else
+	{
 		if (next && next->next)
 			next = next->next;
 		else
 			next = NULL;
+	}
 	if (list_ptr)
 		*list_ptr = next;
 	return (next);
@@ -38,9 +40,9 @@ static t_list	*ft_lst_get_next(t_list *list, const t_list **list_ptr)
  * 		f: The address of the function used to iterate on the list.
  */
 void	ft_list_foreach_if(t_list *list, void (*f)(void *), void *data_ref,
-						   int (*cmp)(void *, void *))
+			int (*cmp)(void *, void *))
 {
-	t_list const *current = ft_lst_get_next(list, NULL);
+	t_list const	*current = ft_lst_get_next(list, NULL);
 
 	if (!list || !f)
 		return ;

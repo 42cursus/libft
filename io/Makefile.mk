@@ -21,7 +21,9 @@ FILES   = ft_fd1.c \
            ft_printf_utils2.c \
            ft_print_hex.c \
            ft_print_unsigned.c \
+           ft_gnl.c \
            ft_gnl_utils.c \
-           ft_gnl.c
+           ft_gnl2.c \
+           ft_gnl2_utils.c
 
 SRCS    += $(patsubst %.c,io/%.c,$(FILES))

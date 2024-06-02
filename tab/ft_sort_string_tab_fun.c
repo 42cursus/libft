@@ -12,12 +12,11 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-
 #include "ft_tab.h"
 
 static inline int	ft_swap(char **a, char **b)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = *b;
 	*b = *a;
@@ -28,7 +27,7 @@ static inline int	ft_swap(char **a, char **b)
 /**
  * Bubble sort
  */
-void ft_sort_string_tab_fun(char **tab, int(*cmp)(char *, char *))
+void	ft_sort_string_tab_fun(char **tab, int (*cmp)(char *, char *))
 {
 	int		i;
 	int		j;
@@ -37,13 +36,13 @@ void ft_sort_string_tab_fun(char **tab, int(*cmp)(char *, char *))
 
 	size = ft_get_tab_size(tab);
 	if (!tab || !*tab || ft_string_tab_is_sort(tab, cmp))
-		return;
+		return ;
 	i = -1;
 	while (++i < (int)(size - 1))
 	{
 		swapped = false;
 		j = -1;
-		while (++j < (int) (size - i - 1))
+		while (++j < (int)(size - i - 1))
 			if (cmp(*(tab + j), *(tab + j + 1)) > 0)
 				swapped = ft_swap(tab + j, tab + j + 1);
 		if (!swapped)

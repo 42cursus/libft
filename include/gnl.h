@@ -62,5 +62,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		lbchange(t_fp *fp, size_t newsize, int flag);
 void	*ft_reallocarray(void *ptr,
-						 size_t oldnmemb, size_t newnmemb, size_t size);
+			size_t oldnmemb, size_t newnmemb, size_t size);
+int		get_next_line2(int fd, char **save_ptr);
+
 #endif //GNL_H

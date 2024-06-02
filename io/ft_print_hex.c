@@ -14,7 +14,6 @@
 
 size_t	get_hex_buf_size(unsigned long long int nb)
 {
-
 	unsigned long	size;
 	int const		hexadecimal_radix = 16;
 

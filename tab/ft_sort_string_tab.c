@@ -14,14 +14,14 @@
 #include <stddef.h>
 #include "ft_string.h"
 
-int ft_string_tab_is_sort(char **tab, int(*f)(char *, char *))
+int	ft_string_tab_is_sort(char **tab, int (*f)(char *, char *))
 {
-	if(!tab || !*tab)
+	if (!tab || !*tab)
 		return (true);
-	if(!f)
+	if (!f)
 		return (false);
-	while(*++tab)
-		if(f(*tab - 1, *tab) > 0)
+	while (*++tab)
+		if (f(*tab - 1, *tab) > 0)
 			return (false);
 	return (true);
 }
@@ -37,7 +37,7 @@ int ft_string_tab_is_sort(char **tab, int(*f)(char *, char *))
  */
 static inline int	ft_swap(char **a, char **b)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = *b;
 	*b = *a;
@@ -48,17 +48,16 @@ static inline int	ft_swap(char **a, char **b)
 /**
  * Bubble sort
  */
-void ft_sort_string_tab(char **tab)
+void	ft_sort_string_tab(char **tab)
 {
-	int		i;
-	int		j;
-	size_t	size;
-	int		swapped;
-	char	*strs[2] = {"",""};
+	int			i;
+	int			j;
+	size_t		size;
+	int			swapped;
 
 	size = 0;
 	if (!tab || !*tab || (*(tab + 1) && ft_string_tab_is_sort(tab, ft_strcmp)))
-		return;
+		return ;
 	while (*tab && ++size)
 		tab++;
 	tab -= size;
@@ -67,11 +66,9 @@ void ft_sort_string_tab(char **tab)
 	{
 		swapped = false;
 		j = -1;
-		while (++j < (int) (size - i - 1))
+		while (++j < (int)(size - i - 1))
 		{
-			strs[0] = *(tab + j);
-			strs[1] = *(tab + j + 1);
-			if (ft_strcmp(strs[0], strs[1]) > 0)
+			if (ft_strcmp(*(tab + j), *(tab + j + 1)) > 0)
 				swapped = ft_swap(tab + j, tab + j + 1);
 		}
 		if (!swapped)

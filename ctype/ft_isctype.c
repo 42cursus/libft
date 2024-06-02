@@ -22,17 +22,18 @@ int	ft_isdigit(int c)
 	return ('0' <= c && c <= '9');
 }
 
-int		ft_isxdigit(int c)
+int	ft_isxdigit(int c)
 {
-	return (ft_isdigit(c) || (c >= 'A' && c <= 'F') ||(c >= 'a' && c <= 'f'));
-}
-
-int	ft_isalnum(int c)
-{
-	return (ft_isalpha(c) || ft_isdigit(c));
+	return (ft_isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'));
 }
 
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= '\x7f');
+}
+
+int	ft_isspace(int c)
+{
+	return ((c == ' ') || (c == '\t')
+		|| (c == '\n') || (c == '\v') || (c == '\f') || (c == '\r'));
 }

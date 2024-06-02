@@ -13,7 +13,7 @@
 #ifndef FT_DEF_H
 # define FT_DEF_H
 # ifndef EOF
-#  define EOF (-1)
+#  define EOF -1
 # endif
 
 /**
@@ -27,6 +27,5 @@
  */
 typedef unsigned int	t_uint;
 typedef unsigned long	t_ulong;
-
 
 #endif //FT_DEF_H

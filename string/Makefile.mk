@@ -18,7 +18,9 @@ FILES   = ft_bzero.c \
            ft_split.c \
            ft_str1.c \
            ft_str2.c \
+           ft_strcpy.c \
            ft_strdup.c \
-           ft_strstr.c
+           ft_strstr.c \
+           ft_strncpy.c
 
 SRCS    += $(patsubst %.c,string/%.c,$(FILES))
