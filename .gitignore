@@ -13,6 +13,7 @@
 bsq
 main
 obj
+build
 ### C template
 # Prerequisites
 *.d
