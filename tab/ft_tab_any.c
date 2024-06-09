@@ -16,7 +16,7 @@
 int	ft_tab_any(void **tab, int (*f)(void *))
 {
 	t_uint	length;
-	int		i;
+	t_uint	i;
 
 	i = 0;
 	length = ft_get_tab_size(tab);

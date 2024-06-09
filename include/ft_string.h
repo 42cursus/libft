@@ -30,5 +30,13 @@ char	*ft_strdup(char *src);
 void	*ft_calloc(size_t nmemb, size_t size);
 long	ft_strtol(const char *nptr, char **endptr, int base);
 t_ulong	ft_strtoul(const char *nptr, char **endptr, int base);
+char	*ft_strtok(char *str, const char *delim);
+char	*ft_strtok_r(char *str, const char *delim, char **saveptr);
+size_t	ft_strspn(const char *s, const char *accept);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strtok_r(char *str, const char *delim, char **saveptr);
+size_t	ft_strcspn(const char *s, const char *reject);
 
 #endif //FT_STRING_H

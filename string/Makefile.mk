@@ -11,16 +11,18 @@
 # **************************************************************************** #
 
 # string sources
-#VPATH   := $(VPATH):${LIBFTSRCDIR}/string
+FILES	= ft_bsdstr.c \
+			ft_bzero.c \
+			ft_mem.c \
+			ft_split.c \
+			ft_str1.c \
+			ft_str2.c \
+			ft_str3.c \
+			ft_strdup.c \
+			ft_strspn.c \
+			ft_strcpy.c \
+			ft_strstr.c \
+			ft_strncpy.c \
+			ft_strtok.c
 
-FILES   = ft_bzero.c \
-           ft_mem.c \
-           ft_split.c \
-           ft_str1.c \
-           ft_str2.c \
-           ft_strcpy.c \
-           ft_strdup.c \
-           ft_strstr.c \
-           ft_strncpy.c
-
-SRCS    += $(patsubst %.c,string/%.c,$(FILES))
+SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

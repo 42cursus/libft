@@ -1,4 +1,3 @@
-
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -13,7 +12,7 @@
 
 NAME			:= libft.a
 CC				:= cc
-#CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
+CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
 INCLUDE_FLAGS	:= -I. -I./include -I/usr/include
 DEBUG_FLAGS		:= -g3 -gdwarf-3
 
@@ -57,4 +56,4 @@ re: fclean all
 norm:
 		@norminette $(SRCS)
 
-.PHONY: all clean flean re bonus $(BUILD_DIR)
+.PHONY: all clean flean re bonus norm $(BUILD_DIR)
