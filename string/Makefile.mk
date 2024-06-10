@@ -22,6 +22,7 @@ FILES	= ft_bsdstr.c \
 			ft_strspn.c \
 			ft_strcpy.c \
 			ft_strstr.c \
+			ft_strcmp.c \
 			ft_strncpy.c \
 			ft_strtok.c
 
