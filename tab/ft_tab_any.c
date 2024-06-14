@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include "ft_tab.h"
 
-int	ft_tab_any(void **tab, int (*f)(void *))
+int	ft_tab_any(void const **tab, int (*f)(void *))
 {
 	t_uint	length;
 	t_uint	i;
@@ -23,7 +23,7 @@ int	ft_tab_any(void **tab, int (*f)(void *))
 	if (!length)
 		return (false);
 	while (i < length)
-		if (f(tab[i++]))
+		if (f((void *)tab[i++]))
 			return (true);
 	return (false);
 }

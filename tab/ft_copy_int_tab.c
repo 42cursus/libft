@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		*ft_copy_int_tab(const int *src, int *dst, int start, int end)
+int	*ft_copy_int_tab(const int *src, int *dst, int start, int end)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < end - start + 1)

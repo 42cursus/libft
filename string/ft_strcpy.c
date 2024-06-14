@@ -21,7 +21,7 @@
  * but the contents of location at which it points are mutable.
  * stackoverflow.com/questions/9834067/difference-between-char-and-const-char
  */
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	char *const	save = dest;
 	const char	null_byte = '\0';

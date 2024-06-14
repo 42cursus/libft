@@ -34,7 +34,7 @@ void	ft_sort_string_tab_fun(char **tab, int (*cmp)(char *, char *))
 	size_t	size;
 	int		swapped;
 
-	size = ft_get_tab_size((void **) tab);
+	size = ft_get_tab_size((void const **) tab);
 	if (!tab || !*tab || ft_string_tab_is_sort(tab, cmp))
 		return ;
 	i = -1;

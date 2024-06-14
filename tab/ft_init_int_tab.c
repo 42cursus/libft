@@ -14,8 +14,8 @@
 
 int	*ft_init_int_tab(int len)
 {
-	int i;
-	int *tab;
+	int	i;
+	int	*tab;
 
 	i = 0;
 	if (len <= 0)

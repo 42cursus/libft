@@ -12,7 +12,7 @@
 
 #include "ft_def.h"
 
-t_uint	ft_get_tab_size(void **tab)
+t_uint	ft_get_tab_size(void const **tab)
 {
 	t_uint	size;
 

@@ -13,9 +13,9 @@
 #include "gnl.h"
 #include "ft_string.h"
 
-int		read_from_fd(char *buffer, char **line, t_gnl **list, int fd);
+int	read_from_fd(char *buffer, char **line, t_gnl **list, int fd);
 
-int		save_remainder_into_list(t_gnl **list, int fd, char *buffer, int i)
+int	save_remainder_into_list(t_gnl **list, int fd, char *buffer, int i)
 {
 	t_gnl		*current;
 	t_gnl		*new;
@@ -28,7 +28,8 @@ int		save_remainder_into_list(t_gnl **list, int fd, char *buffer, int i)
 		current->str = ft_strdup(buffer + i + 1);
 	else if (buffer[i + 1] != '\0')
 	{
-		if (!(new = (t_gnl*)malloc(sizeof(*new))))
+		new = (t_gnl *)malloc(sizeof(*new));
+		if (!new)
 			return (-1);
 		new->str = ft_strdup(buffer + i + 1);
 		new->fd = fd;
@@ -42,19 +43,7 @@ int		save_remainder_into_list(t_gnl **list, int fd, char *buffer, int i)
 	return (1);
 }
 
-//char	*ft_strnew(size_t size)
-//{
-//	char	*str;
-//
-//	if (!(str = (char*)malloc(sizeof(char) * ((size + 1)))))
-//		return (NULL);
-//	size++;
-//	while (size--)
-//		str[size] = '\0';
-//	return (str);
-//}
-
-int		line_memory_allocation(char **line, int new_length)
+int	line_memory_allocation(char **line, int new_length)
 {
 	char			*tmp;
 	size_t			ret_val;
@@ -68,7 +57,8 @@ int		line_memory_allocation(char **line, int new_length)
 	}
 	else
 	{
-		if (!(tmp = ft_strdup(*line)))
+		tmp = ft_strdup(*line);
+		if (!tmp)
 			return (-1);
 		free(*line);
 		ret_val = ft_strlen(tmp);
@@ -81,7 +71,7 @@ int		line_memory_allocation(char **line, int new_length)
 	return ((int)ret_val);
 }
 
-int		put_buffer_into_line(char *buffer, char **line, t_gnl **list, int fd)
+int	put_buffer_into_line(char *buffer, char **line, t_gnl **list, int fd)
 {
 	int		i;
 	int		j;
@@ -101,13 +91,13 @@ int		put_buffer_into_line(char *buffer, char **line, t_gnl **list, int fd)
 	return (1);
 }
 
-int		read_from_fd(char *buffer, char **line, t_gnl **list, int fd)
+int	read_from_fd(char *buffer, char **line, t_gnl **list, int fd)
 {
 	ssize_t	bytes_read;
 
 	if (buffer)
 		free(buffer);
-	buffer = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (-1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -124,7 +114,7 @@ int		read_from_fd(char *buffer, char **line, t_gnl **list, int fd)
 	return (put_buffer_into_line(buffer, line, list, fd));
 }
 
-int		ft_getline(const int fd, char **line)
+int	ft_getline(const int fd, char **line)
 {
 	static t_gnl	*list;
 	t_gnl			*prev_or_curr[2];

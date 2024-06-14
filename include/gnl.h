@@ -37,12 +37,12 @@ typedef struct s_buf
 	int				_size;
 }	t_buf;
 
-typedef struct		s_gnl
+typedef struct s_gnl
 {
 	int				fd;
 	char			*str;
 	struct s_gnl	*next;
-}					t_gnl;
+}	t_gnl;
 
 /*
  * _IO_FILE object type capable of recording all the information needed to

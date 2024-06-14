@@ -12,8 +12,8 @@
 
 int	ft_nblen(int nbr)
 {
-	int curr;
-	int len;
+	int	curr;
+	int	len;
 
 	len = 0;
 	curr = nbr;
@@ -24,5 +24,5 @@ int	ft_nblen(int nbr)
 		curr = curr / 10;
 		len++;
 	}
-	return len;
+	return (len);
 }
