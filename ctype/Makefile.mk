@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES   = ft_isctype.c ft_isctype2.c
+FILES   = ft_isctype.c \
+			ft_isctype2.c
 
-SRCS    += $(patsubst %.c,ctype/%.c,$(FILES))
+SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

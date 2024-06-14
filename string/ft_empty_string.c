@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str2.c                                          :+:      :+:    :+:   */
+/*   ft_empty_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,11 +17,11 @@ char	*ft_empty_string(size_t length)
 	char			*new;
 	unsigned char	*ptr;
 
-	new = (char *)malloc(sizeof(char) * length + 1);
+	new = (char *)malloc(sizeof(char) * (++length));
 	if (!new)
 		return (NULL);
 	ptr = (unsigned char *)new;
-	while (--length > 0)
-		*ptr++ = '\0';
+	while (length--)
+		*(ptr++) = '\0';
 	return (new);
 }

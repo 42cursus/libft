@@ -37,6 +37,13 @@ typedef struct s_buf
 	int				_size;
 }	t_buf;
 
+typedef struct		s_gnl
+{
+	int				fd;
+	char			*str;
+	struct s_gnl	*next;
+}					t_gnl;
+
 /*
  * _IO_FILE object type capable of recording all the information needed to
  * control a stream, including its file position indicator, a pointer to its
@@ -59,6 +66,7 @@ typedef struct s_io_file
 }							t_fp;
 
 char	*get_next_line(int fd);
+int		ft_getline(const int fd, char **line);
 int		get_str(t_fp *fp, size_t len, size_t offset);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

@@ -6,7 +6,7 @@
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/16 02:54:03 by abelov            #+#    #+#              #
-#    Updated: 2023/12/16 02:54:06 by abelov           ###   ########.fr        #
+#    Updated: 2024/06/14 17:49:59 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,4 +32,4 @@ FILES   = ft_list_create_elem.c \
 			ft_list_utils2.c \
 			ft_sorted_list_insert.c \
 			ft_sorted_list_merge.c
-SRCS    += $(patsubst %.c,list/%.c,$(FILES))
+SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
