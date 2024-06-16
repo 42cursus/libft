@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_tab_int_get_index.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 00:39:51 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/06/15 19:55:21 by abelov            #+#    #+#             */
+/*   Updated: 2024/06/15 19:55:22 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-
-void	ft_list_push_front(t_list **list, void *data)
+int ft_tab_int_get_index(int const *tab, int start, int end, int to_find)
 {
-	t_list	*new;
+	int		i;
 
-	new = ft_list_create_elem(data);
-	if (list && new)
+	i = start;
+	while (i <= end)
 	{
-		new->next = *list;
-		*list = new;
+		if (tab[i] == to_find)
+			return (i);
+		i++;
 	}
+	return (-1);
+}
+
+int ft_tab_int_contains(const int *tab, int size, int to_find)
+{
+	return (ft_tab_int_get_index(tab, 0, size - 1, to_find));
 }

@@ -29,8 +29,8 @@ char	*ft_strstr(char *str, char *to_find)
 	{
 		s = str;
 		to_find = save;
-		while (*to_find == *s++)
-			if (!*to_find++)
+		while (*to_find++ == *s++)
+			if (!*to_find)
 				return (str);
 		str++;
 	}

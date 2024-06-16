@@ -14,10 +14,12 @@ FILES   = ft_get_tab_size.c \
 			ft_tab_any.c \
 			ft_tab_count_if.c \
 			ft_tab_foreach.c \
+			ft_tab_free.c \
+			ft_tab_int_get_index.c \
+			ft_tab_int_init.c \
 			ft_tab_is_sort.c \
 			ft_tab_map.c \
 			ft_tab_string_join.c \
-			ft_init_int_tab.c \
 			ft_copy_int_tab.c \
 			ft_sort_int_tab.c \
 			ft_sort_string_tab.c \

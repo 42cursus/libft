@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_tab_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 19:53:13 by abelov            #+#    #+#             */
-/*   Updated: 2024/06/10 19:53:13 by abelov           ###   ########.fr       */
+/*   Created: 2024/06/10 19:37:35 by abelov            #+#    #+#             */
+/*   Updated: 2024/06/15 19:13:33 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <malloc.h>
+#include <stdlib.h>
 
-int	*ft_init_int_tab(int len)
+void	ft_tab_free(void **str_tab)
 {
-	int	i;
-	int	*tab;
+	int i;
 
-	i = 0;
-	if (len <= 0)
-		return (NULL);
-	tab = (int *)malloc(sizeof(int) * len);
-	if (!tab)
-		return (NULL);
-	while (i < len)
+	if (str_tab != NULL)
 	{
-		tab[i] = 0;
-		i++;
+		i = -1;
+		while (str_tab[++i] != NULL)
+			free(str_tab[i]);
+		free(str_tab);
 	}
-	return (tab);
 }

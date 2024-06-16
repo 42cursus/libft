@@ -18,13 +18,14 @@ void	ft_list_push_back(t_list **list, void *data)
 	t_list	*new;
 
 	new = ft_list_create_elem(data);
-	if (!list || !new)
-		return ;
-	if (*list)
+	if (list && new)
 	{
-		last = ft_list_last(*list);
-		last->next = new;
+		if (*list)
+		{
+			last = ft_list_last(*list);
+			last->next = new;
+		}
+		else
+			*list = new;
 	}
-	else
-		*list = new;
 }
