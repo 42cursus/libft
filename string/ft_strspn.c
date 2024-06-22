@@ -29,19 +29,45 @@ size_t	ft_strspn(const char *s, const char *accept)
 	return (s - optr);
 }
 
+size_t	ft_strcspn_reject(const char *s, const char *reject)
+{
+	const char	*ptr;
+	const char	*rjct;
+	size_t		count;
+
+	ptr = s - 1;
+	count = 0;
+	while (*(++ptr) != '\0')
+	{
+		rjct = reject;
+		while (*rjct != '\0')
+		{
+			if (*ptr == *rjct)
+			{
+				count++;
+				break ;
+			}
+			rjct++;
+		}
+		if (*rjct == '\0')
+			break ;
+	}
+	return (count);
+}
+
 /**
  * The ft_strcspn() function calculates the length of the initial segment of s
  * which consists entirely of bytes not in reject.
  */
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	const char	*optr = s;
+	const char *const	save = s;
 
 	while (*s)
 	{
-		if (ft_strchr(reject, *s))
+		if (ft_strchr(reject, *s) != NULL)
 			break ;
 		s++;
 	}
-	return (s - optr);
+	return (s - save);
 }

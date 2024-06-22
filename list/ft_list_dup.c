@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find.c                                     :+:      :+:    :+:   */
+/*   ft_list_dup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 20:08:46 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Updated: 2024/06/21 02:28:24 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "ft_list.h"
 
-t_list	*ft_list_find(t_list *list, void *data_ref,
-						int (*cmp)(void *, void *))
+/**
+ * Creates a copy of the list
+ */
+t_list	*ft_list_dup(t_list *list)
 {
-	t_list	*to_return;
+	t_list	*new;
+	t_list	*current;
 
-	to_return = NULL;
+	new = NULL;
 	if (list != NULL)
 	{
-		while (list->next)
+		current = list;
+		while (current)
 		{
-			if (!cmp(list->data, data_ref))
-			{
-				to_return = list;
-				break ;
-			}
-			list = list->next;
+			ft_list_push_front(&new, current->data);
+			current = current->next;
 		}
-		if (to_return != NULL && !cmp(list->data, data_ref))
-			to_return = list;
+		ft_list_reverse(&new);
 	}
-	return (to_return);
+	else
+		new = NULL;
+	return (new);
 }

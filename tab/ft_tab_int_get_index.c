@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_tab_int_get_index(int const *tab, int start, int end, int to_find)
+int	ft_tab_int_get_index(int const *tab, int start, int end, int to_find)
 {
 	int		i;
 
@@ -24,7 +24,7 @@ int ft_tab_int_get_index(int const *tab, int start, int end, int to_find)
 	return (-1);
 }
 
-int ft_tab_int_contains(const int *tab, int size, int to_find)
+int	ft_tab_int_contains(const int *tab, int size, int to_find)
 {
 	return (ft_tab_int_get_index(tab, 0, size - 1, to_find));
 }

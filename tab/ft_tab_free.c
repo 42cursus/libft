@@ -14,7 +14,7 @@
 
 void	ft_tab_free(void **str_tab)
 {
-	int i;
+	int	i;
 
 	if (str_tab != NULL)
 	{

@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find.c                                     :+:      :+:    :+:   */
+/*   ft_list_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 20:08:46 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Updated: 2024/06/22 17:26:23 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include "ft_list.h"
 
-t_list	*ft_list_find(t_list *list, void *data_ref,
-						int (*cmp)(void *, void *))
+/**
+ * Deletes and frees the given node and every successor of that node,
+ * using the function 'del_fun' and free(3).
+ *
+ * Parameters:
+ * 		list: The address of a first node.
+ * 		del_fun: The address of the function used to delete the data content.
+ */
+void	ft_list_destroy(t_list **list, void (*del_fun)(void *))
 {
-	t_list	*to_return;
+	t_list	*current;
+	t_list	*next;
 
-	to_return = NULL;
 	if (list != NULL)
 	{
-		while (list->next)
+		current = *list;
+		while (current != NULL)
 		{
-			if (!cmp(list->data, data_ref))
-			{
-				to_return = list;
-				break ;
-			}
-			list = list->next;
+			next = current->next;
+			if (del_fun != NULL)
+				del_fun(current->data);
+			free(current);
+			current = next;
 		}
-		if (to_return != NULL && !cmp(list->data, data_ref))
-			to_return = list;
 	}
-	return (to_return);
 }

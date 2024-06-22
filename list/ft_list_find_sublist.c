@@ -1,37 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find.c                                     :+:      :+:    :+:   */
+/*   ft_list_find_sublist.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 20:08:46 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/16 00:22:13 by abelov           ###   ########.fr       */
+/*   Updated: 2024/06/22 16:10:24 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "ft_list.h"
 
-t_list	*ft_list_find(t_list *list, void *data_ref,
+int	ft_list_starts_with(t_list *head, t_list *sub,
 						int (*cmp)(void *, void *))
 {
+	int	ret_val;
+
+	ret_val = 1;
+	while (sub != NULL)
+	{
+		if (head == NULL || cmp(head->data, sub->data))
+		{
+			ret_val = 0;
+			break ;
+		}
+		head = head->next;
+		sub = sub->next;
+	}
+	return (ret_val);
+}
+
+t_list	*ft_list_find_sublist(t_list *list, t_list *const sub_list,
+								int (*cmp)(void *, void *))
+{
 	t_list	*to_return;
+	t_list	*sub_head;
+	t_list	*current;
 
 	to_return = NULL;
 	if (list != NULL)
 	{
-		while (list->next)
+		current = list;
+		sub_head = sub_list;
+		while (current->next != NULL)
 		{
-			if (!cmp(list->data, data_ref))
+			if (ft_list_starts_with(current->next, sub_head, cmp))
 			{
-				to_return = list;
+				to_return = current->next;
 				break ;
 			}
-			list = list->next;
+			else
+				current = current->next;
 		}
-		if (to_return != NULL && !cmp(list->data, data_ref))
-			to_return = list;
 	}
 	return (to_return);
 }
