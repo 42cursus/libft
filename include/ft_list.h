@@ -40,8 +40,9 @@ typedef struct s_list_swap
 
 typedef struct s_list_fun
 {
-	int		(*cmp)(void *, void *);
+	int		(*cmp_fun)(void *, void *);
 	void	(*del_fun)(void *);
+	void	*(*dup_fun)(void *);
 }	t_list_fun;
 
 t_list	*ft_list_create_elem(void *content);
@@ -55,6 +56,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_list_dup(t_list *list);
+t_list	*ft_list_dup_fun(t_list *list, void *(*dup_fun)(void *));
 void	ft_list_push_front(t_list **list, void *data);
 int		ft_list_size(t_list *list);
 t_list	*ft_list_last(t_list *list);
@@ -71,7 +73,7 @@ t_list	*ft_list_find(t_list *list, void *data_ref,
 			int (*cmp)(void *, void *));
 int		ft_list_starts_with(t_list *head, t_list *sub,
 			int (*cmp)(void *, void *));
-t_list	*ft_list_find_sublist(t_list *list, t_list *const sub_list,
+t_list	*ft_list_find_sublist(t_list *list, t_list *sub_list,
 			int (*cmp)(void *, void *));
 void	ft_list_remove_if(t_list **list, void *data_ref,
 			int (*cmp)(void *, void *), void (*del_fun)(void *));
@@ -84,8 +86,8 @@ void	ft_sorted_list_insert(t_list **list, void *data,
 void	ft_sorted_list_merge(t_list **list1, t_list *list2,
 			int (*cmp)(void *, void *));
 void	ft_list_reverse_fun(t_list *list);
-void	ft_list_remove_sublist(t_list **list, t_list *const	sub_list,
+void	ft_list_remove_sublist(t_list **list, t_list *sub_list,
 			int (*cmp)(void *, void *), void (*del_fun)(void *));
-void	ft_list_replace_sublist(t_list **list, t_list *const to_find,
-			t_list *const to_replace_with, t_list_fun *lst_fun);
+void	ft_list_replace_sublist(t_list **list, t_list *to_find,
+			t_list *to_replace_with, t_list_fun *lst_fun);
 #endif //FT_LIST_H
