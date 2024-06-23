@@ -41,6 +41,20 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int nb);
 int		ft_nblen(int nbr);
+
+typedef struct s_object_arr	t_object_arr;
+struct s_object_arr
+{
+	const void	*base;
+	size_t		total_elems;
+	size_t		size;
+};
+void	ft_bsort(void *const base, size_t total_elems,
+			size_t size, __compar_fn_t cmp);
+void	ft_qsort(void *const base, size_t total_elems,
+			size_t size, __compar_fn_t cmp);
+void	*ft_bsearch(const void *key, t_object_arr *object_arr,
+			__compar_fn_t cmp);
 int		ft_atoi_base(char *str, char *base);
 char	*ft_itoa_buf(int nb, char *buf, size_t length);
 char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length);
@@ -48,7 +62,7 @@ char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length);
 /* ---------- PRINTF -------------------- */
 int		ft_printf(const char *format, ...);
 
-typedef size_t	(*t_ft_print_dispatch_f)(va_list *ap);
+typedef size_t				(*t_ft_print_dispatch_f)(va_list *ap);
 
 size_t	ft_print_p(va_list *argp);
 size_t	ft_print_d(va_list *argp);

@@ -10,12 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES   = ft_calloc.c \
-           ft_nblen.c \
-           ft_atoi.c \
+FILES   = ft_atoi.c \
+           ft_atoi_base.c \
+           ft_bsearch.c \
+           ft_bsort.c \
+           ft_calloc.c \
            ft_itoa.c \
+           ft_nblen.c \
+           ft_qsort.c \
            ft_strtol.c \
-           ft_strtoul.c \
-           ft_atoi_base.c
+           ft_strtoul.c
 
 SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

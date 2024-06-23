@@ -38,11 +38,12 @@ typedef struct s_list_swap
 	t_list	*el2;
 }		t_list_swap;
 
+typedef __compar_fn_t	t_cmp_fun;
 typedef struct s_list_fun
 {
-	int		(*cmp_fun)(void *, void *);
-	void	(*del_fun)(void *);
-	void	*(*dup_fun)(void *);
+	t_cmp_fun	cmp_fun;
+	void		(*del_fun)(void *);
+	void		*(*dup_fun)(void *);
 }	t_list_fun;
 
 t_list	*ft_list_create_elem(void *content);
