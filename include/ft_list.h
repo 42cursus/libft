@@ -12,6 +12,7 @@
 
 #ifndef FT_LIST_H
 # define FT_LIST_H
+# include <stdlib.h>
 
 typedef struct s_list	t_list;
 struct s_list
@@ -69,13 +70,13 @@ void	ft_list_reverse(t_list **list);
 void	ft_list_foreach(t_list *list, void (*f)(void *));
 void	ft_list_foreach_if(t_list *list, void (*f)(void *), void *data_ref,
 			int (*cmp)(void *, void *));
-void	ft_list_foreach_ref(t_list *list, void (*f)(void *, void *), void *ref);
+void	ft_list_foreach_ref(t_list *list,
+			void (*f)(void *, void *), void *ref);
 t_list	*ft_list_find(t_list *list, void *data_ref,
 			int (*cmp)(void *, void *));
-int		ft_list_starts_with(t_list *head, t_list *sub,
-			int (*cmp)(void *, void *));
+int		ft_list_starts_with(t_list *head, t_list *sub, __compar_fn_t cmp);
 t_list	*ft_list_find_sublist(t_list *list, t_list *sub_list,
-			int (*cmp)(void *, void *));
+			__compar_fn_t cmp);
 void	ft_list_remove_if(t_list **list, void *data_ref,
 			int (*cmp)(void *, void *), void (*del_fun)(void *));
 void	ft_list_prepend(t_list **lst, t_list *new);
@@ -88,7 +89,7 @@ void	ft_sorted_list_merge(t_list **list1, t_list *list2,
 			int (*cmp)(void *, void *));
 void	ft_list_reverse_fun(t_list *list);
 void	ft_list_remove_sublist(t_list **list, t_list *sub_list,
-			int (*cmp)(void *, void *), void (*del_fun)(void *));
+			__compar_fn_t cmp, void (*del_fun)(void *));
 void	ft_list_replace_sublist(t_list **list, t_list *to_find,
 			t_list *to_replace_with, t_list_fun *lst_fun);
 #endif //FT_LIST_H

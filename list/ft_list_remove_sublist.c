@@ -35,8 +35,7 @@ void	remove_nodes(t_list *parent, t_list *sub_list, void (*del_fun)(void *))
  * removes every occurrence of sub-list from the given list
  */
 void	ft_list_remove_sublist(t_list **list, t_list *const	sub_list,
-							int (*cmp)(void *, void *),
-							void (*del_fun)(void *))
+			__compar_fn_t cmp, void (*del_fun)(void *))
 {
 	t_list	*dummy;
 	t_list	*current;

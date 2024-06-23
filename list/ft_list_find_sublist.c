@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 #include "ft_list.h"
 
-int	ft_list_starts_with(t_list *head, t_list *sub,
-						int (*cmp)(void *, void *))
+int	ft_list_starts_with(t_list *head, t_list *sub, __compar_fn_t cmp)
 {
 	int	ret_val;
 
@@ -33,7 +33,7 @@ int	ft_list_starts_with(t_list *head, t_list *sub,
 }
 
 t_list	*ft_list_find_sublist(t_list *list, t_list *const sub_list,
-								int (*cmp)(void *, void *))
+								__compar_fn_t cmp)
 {
 	t_list	*to_return;
 	t_list	*sub_head;

@@ -31,7 +31,7 @@ void	ft_list_replace_sublist(t_list **list,
 	t_list	*sub_head;
 	t_list	*current;
 
-	if (list != NULL && lst_fun != NULL && lst_fun->del_fun != NULL)
+	if (list != NULL && lst_fun != NULL)
 	{
 		dummy = &(t_list){.next = *list};
 		current = dummy;
