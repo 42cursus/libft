@@ -63,7 +63,7 @@ void	ft_list_push_front(t_list **list, void *data);
 int		ft_list_size(t_list *list);
 t_list	*ft_list_last(t_list *list);
 void	ft_list_push_back(t_list **list, void *data);
-t_list	*ft_list_push_strs(int size, char **strs);
+t_list	*ft_list_push_strs(int size, const char **strs);
 void	ft_list_clear(t_list *list, void (*del_fun)(void *));
 t_list	*ft_list_at(t_list *list, unsigned int nbr);
 void	ft_list_reverse(t_list **list);

@@ -17,7 +17,7 @@
  * Creates a new list that includes all string pointed by the element in strs.
  * The first element should be at the end of the list.
  */
-t_list	*ft_list_push_strs(int size, char **strs)
+t_list	*ft_list_push_strs(int size, const char **strs)
 {
 	t_list	*list;
 
