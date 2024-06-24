@@ -54,6 +54,6 @@ fclean: clean
 re: fclean all
 
 norm:
-		@norminette $(SRCS)
+		@norminette --use-gitignore
 
 .PHONY: all clean flean re bonus norm $(BUILD_DIR)
