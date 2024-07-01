@@ -19,7 +19,7 @@ void	ft_tab_foreach(int *tab, int length, void (*f)(int))
 	int	i;
 
 	i = 0;
-	if (!tab || !length)
+	if (!tab || !length || !f)
 		return ;
 	while (i < length)
 		f(tab[i++]);
