@@ -37,9 +37,9 @@ char	*ft_strjoin2(char const **strs, size_t nmemb, char *sep)
 	size_t	i;
 
 	if (nmemb <= 0)
-		return (ft_empty_string(0));
+		return (ft_strnew(0));
 	i = ft_strlen_all(strs, nmemb) + (ft_strlen(sep) * (nmemb - 1));
-	new = ft_empty_string(i);
+	new = ft_strnew(i);
 	i = -1;
 	while (++i < nmemb)
 		ft_strcat(ft_strcat(new, strs[i]), sep);

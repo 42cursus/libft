@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str2.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:13:01 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/04 14:13:03 by abelov           ###   ########.fr       */
+/*   Updated: 2024/07/27 18:19:20 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t		i;
-	char		*s;
+	const char	*s;
 	const char	*save = little;
 
-	i = 0;
-	s = (char *)big;
 	if (big == little || !(*little))
-		return (s);
+		return ((char *)big);
 	while ((len > 0) && *big)
 	{
-		s = (char *)big;
+		s = big;
 		little = save;
 		i = 0;
 		while ((*little++ == *s++) && (len != i++))

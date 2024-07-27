@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str3.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/31 03:40:56 by abelov            #+#    #+#             */
-/*   Updated: 2023/12/31 03:40:58 by abelov           ###   ########.fr       */
+/*   Created: 2024/07/27 18:18:03 by abelov            #+#    #+#             */
+/*   Updated: 2024/07/27 18:18:04 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/**
- * Applies the function 'f' on each character of the string passed as argument,
- * passing its index as first argument.
- * Each character is passed by address to 'f' to be modified if necessary.
- */
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-{
-	size_t	i;
-
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (*s)
-		f(i++, s++);
-}
 
 /**
  * Applies the function 'f' to each character of the string 's', and passing

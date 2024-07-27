@@ -23,8 +23,12 @@ char	*ft_strrchr(const char *s, int chr);
 size_t	ft_strstr_fixed(char *haystack, char *words[]);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, const char *src, unsigned int n);
+char	*ft_strnew(size_t length);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strncat(char *dest, const char *src, unsigned int nb);
+char	*ft_strndup(const char *src, unsigned int nb);
 char	*ft_strstr(char *str, char *to_find);
-char	*ft_empty_string(size_t length);
+char	*ft_strnew(size_t length);
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -42,8 +46,12 @@ char	*ft_strcat(char *dest, const char *src);
 char	*ft_strpcat(char *dest, const char *src);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtok_r(char *str, const char *delim, char **saveptr);
 size_t	ft_strcspn(const char *s, const char *reject);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif //FT_STRING_H

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 17:37:43 by abelov            #+#    #+#             */
-/*   Updated: 2024/07/27 18:03:16 by abelov           ###   ########.fr       */
+/*   Created: 2024/07/02 17:42:23 by abelov            #+#    #+#             */
+/*   Updated: 2024/07/02 17:42:24 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * ft_strlen() - calculates the length of the string pointed to by s, excluding
- * the terminating null byte ('\0').
- * Returns the number of bytes in the string pointed to by s.
+ * The ft_strndup() function is similar to ft_strdup, but copies at most nb
+ * bytes. If s is longer than nb, only nb bytes are copied,
+ * and a terminating null byte ('\0') is added.
  */
-size_t	ft_strlen(const char *str)
+char	*ft_strndup(const char *src, unsigned int nb)
 {
-	const char *const	optr = str;
+	char	*dst;
 
-	while (*str)
-		str++;
-	return (str - optr);
+	if (!src)
+		return (NULL);
+	dst = ft_strnew(ft_strlen(src));
+	if (!dst)
+		return (NULL);
+	return (ft_strncpy(dst, src, nb));
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 17:37:43 by abelov            #+#    #+#             */
-/*   Updated: 2024/07/27 18:03:16 by abelov           ###   ########.fr       */
+/*   Created: 2023/12/18 07:10:54 by abelov            #+#    #+#             */
+/*   Updated: 2023/12/18 07:10:55 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * ft_strlen() - calculates the length of the string pointed to by s, excluding
- * the terminating null byte ('\0').
- * Returns the number of bytes in the string pointed to by s.
- */
-size_t	ft_strlen(const char *str)
+char	*ft_strnew(size_t length)
 {
-	const char *const	optr = str;
+	char			*new;
+	unsigned char	*ptr;
 
-	while (*str)
-		str++;
-	return (str - optr);
+	new = (char *)malloc(sizeof(char) * (++length));
+	if (!new)
+		return (NULL);
+	ptr = (unsigned char *)new;
+	while (length--)
+		*(ptr++) = '\0';
+	return (new);
 }

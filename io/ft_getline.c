@@ -51,7 +51,7 @@ int	line_memory_allocation(char **line, int new_length)
 	ret_val = 0;
 	if (!*line)
 	{
-		*line = ft_empty_string(new_length);
+		*line = ft_strnew(new_length);
 		if (!(*line))
 			return (-1);
 	}
@@ -62,7 +62,7 @@ int	line_memory_allocation(char **line, int new_length)
 			return (-1);
 		free(*line);
 		ret_val = ft_strlen(tmp);
-		*line = ft_empty_string(new_length + ret_val);
+		*line = ft_strnew(new_length + ret_val);
 		if (!(*line))
 			return (-1);
 		ft_strcpy(*line, tmp);

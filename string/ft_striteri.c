@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_empty_string.c                                  :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 07:10:54 by abelov            #+#    #+#             */
-/*   Updated: 2023/12/18 07:10:55 by abelov           ###   ########.fr       */
+/*   Created: 2023/12/31 03:40:56 by abelov            #+#    #+#             */
+/*   Updated: 2024/07/27 18:19:24 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_empty_string(size_t length)
+/**
+ * Applies the function 'f' on each character of the string passed as argument,
+ * passing its index as first argument.
+ * Each character is passed by address to 'f' to be modified if necessary.
+ */
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char			*new;
-	unsigned char	*ptr;
+	size_t	i;
 
-	new = (char *)malloc(sizeof(char) * (++length));
-	if (!new)
-		return (NULL);
-	ptr = (unsigned char *)new;
-	while (length--)
-		*(ptr++) = '\0';
-	return (new);
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (*s)
+		f(i++, s++);
 }
