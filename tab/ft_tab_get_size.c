@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_tab_get_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 18:37:12 by abelov            #+#    #+#             */
-/*   Updated: 2023/11/18 20:28:59 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/26 22:16:45 by abelov            #+#    #+#             */
+/*   Updated: 2024/05/27 00:15:01 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "ft_def.h"
 
-char	*ft_strdup(const char *const src)
+t_uint	ft_tab_get_size(void const **tab)
 {
-	char	*new;
+	t_uint	size;
 
-	new = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (!new)
-		return (NULL);
-	return (ft_strcpy(new, src));
+	size = 0;
+	while (*tab && ++size)
+		tab++;
+	return (size);
 }

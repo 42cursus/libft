@@ -22,11 +22,12 @@ int		ft_tab_any(void const **tab, int (*f)(void *));
 int		ft_tab_count_if(void **tab, int length, int (*f)(void *));
 int		ft_tab_is_sort(int *tab, int length, int (*f)(int, int));
 char	*ft_tab_string_join(char const **str_tab);
-t_uint	ft_get_tab_size(void const **tab);
+t_uint	ft_tab_get_size(void const **tab);
 int		*ft_sort_int_tab(int *tab, int size);
 void	ft_sort_string_tab(char **tab);
-int		ft_string_tab_is_sort(char **tab, int (*f)(char *, char *));
-void	ft_sort_string_tab_fun(char **tab, int (*cmp)(char *, char *));
+int		ft_string_tab_is_sort(char **tab, int (*f)(const char *, const char *));
+void	ft_sort_string_tab_fun(char **tab,
+			int (*cmp)(const char *, const char *));
 int		*ft_tab_int_init(int len);
 int		*ft_copy_int_tab(int *src, int *dst, int start, int end);
 int		ft_tab_int_get_index(int const *tab, int start, int end, int to_find);

@@ -12,7 +12,7 @@
 
 #include "ft_string.h"
 
-t_uint	ft_get_tab_size(void const **tab);
+t_uint	ft_tab_get_size(void const **tab);
 
 static inline size_t	ft_strlen_all(char const **str_tab, size_t size)
 {
@@ -50,6 +50,6 @@ char	*ft_tab_string_join(char const **str_tab)
 {
 	size_t	size;
 
-	size = ft_get_tab_size((const void **) str_tab);
+	size = ft_tab_get_size((const void **) str_tab);
 	return (ft_strjoin2(str_tab, size, " "));
 }

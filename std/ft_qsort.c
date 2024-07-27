@@ -17,3 +17,8 @@ void	ft_qsort(void *const base, size_t total_elems,
 {
 	ft_bsort(base, total_elems, size, cmp);
 }
+
+void	ft_qsort_obj(t_obj_arr *obj)
+{
+	ft_qsort(obj->base, obj->total_elems, obj->elem_size, obj->cmp_fun);
+}

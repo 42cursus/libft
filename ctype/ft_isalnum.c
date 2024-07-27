@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_tab_size.c                                  :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 22:16:45 by abelov            #+#    #+#             */
-/*   Updated: 2024/05/27 00:15:01 by abelov           ###   ########.fr       */
+/*   Created: 2024/07/27 20:06:01 by abelov            #+#    #+#             */
+/*   Updated: 2024/07/27 20:06:02 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_def.h"
-
-t_uint	ft_get_tab_size(void const **tab)
+int	ft_isalnum(int c)
 {
-	t_uint	size;
-
-	size = 0;
-	while (*tab && ++size)
-		tab++;
-	return (size);
+	return ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'));
 }

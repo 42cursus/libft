@@ -19,7 +19,7 @@ int	ft_tab_any(void const **tab, int (*f)(void *))
 	t_uint	i;
 
 	i = 0;
-	length = ft_get_tab_size(tab);
+	length = ft_tab_get_size(tab);
 	if (!length)
 		return (false);
 	while (i < length)

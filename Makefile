@@ -13,7 +13,7 @@
 NAME			:= libft.a
 CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
-INCLUDE_FLAGS	:= -I. -I./include -I/usr/include
+INCLUDE_FLAGS	:= -I. -I./include -I./include/ft -I/usr/include
 DEBUG_FLAGS		:= -g3 -gdwarf-3
 
 CTAGS			:= ctags
