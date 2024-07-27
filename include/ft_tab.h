@@ -15,7 +15,7 @@
 
 # include "ft_def.h"
 
-void	ft_tab_free(void **str_tab);
+void	ft_tab_str_free(char **str_tab);
 void	ft_tab_foreach(int *tab, int length, void (*f)(int));
 int		*ft_tab_map(int *tab, int length, int (*f)(int));
 int		ft_tab_any(void const **tab, int (*f)(void *));

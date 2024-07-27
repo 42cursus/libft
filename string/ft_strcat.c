@@ -30,3 +30,16 @@ char	*ft_strcat(char *dest, const char *src)
 	*dest = null_byte;
 	return (save);
 }
+
+/**
+ * https://www.joelonsoftware.com/2001/12/11/back-to-basics/
+ */
+char	*ft_strpcat(char *dest, const char *src)
+{
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (--dest);
+}

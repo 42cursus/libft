@@ -14,7 +14,7 @@ FILES   = ft_get_tab_size.c \
 			ft_tab_any.c \
 			ft_tab_count_if.c \
 			ft_tab_foreach.c \
-			ft_tab_free.c \
+			ft_tab_str_free.c \
 			ft_tab_int_get_index.c \
 			ft_tab_int_init.c \
 			ft_tab_is_sort.c \

@@ -24,10 +24,9 @@
 char	*ft_strcpy(char *dest, const char *src)
 {
 	char *const	save = dest;
-	const char	null_byte = '\0';
 
 	while (*src)
 		*dest++ = *src++;
-	*dest = null_byte;
+	*dest = '\0';
 	return (save);
 }
