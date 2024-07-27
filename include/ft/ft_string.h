@@ -17,7 +17,7 @@
 # include "ft_def.h"
 
 size_t	ft_strlen(const char *s);
-int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int chr);
 char	*ft_strrchr(const char *s, int chr);
 size_t	ft_strstr_fixed(char *haystack, char *words[]);
@@ -33,7 +33,7 @@ void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin2(char const **strs, size_t nmemb, char *sep);
-char	*ft_strdup(char *const src);
+char	*ft_strdup(const char *const src);
 void	*ft_calloc(size_t nmemb, size_t size);
 long	ft_strtol(const char *nptr, char **endptr, int base);
 t_ulong	ft_strtoul(const char *nptr, char **endptr, int base);

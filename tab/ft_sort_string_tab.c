@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "ft_string.h"
 
-int	ft_string_tab_is_sort(char **tab, int (*f)(char *, char *))
+int	ft_string_tab_is_sort(char **tab, int (*f)(const char *, const char *))
 {
 	if (!tab || !*tab)
 		return (true);

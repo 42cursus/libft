@@ -27,14 +27,15 @@ static inline int	ft_swap(char **a, char **b)
 /**
  * Bubble sort
  */
-void	ft_sort_string_tab_fun(char **tab, int (*cmp)(char *, char *))
+void	ft_sort_string_tab_fun(char **tab,
+								int (*cmp)(const char *, const char *))
 {
 	int		i;
 	int		j;
 	size_t	size;
 	int		swapped;
 
-	size = ft_get_tab_size((void const **) tab);
+	size = ft_tab_get_size((void const **) tab);
 	if (!tab || !*tab || ft_string_tab_is_sort(tab, cmp))
 		return ;
 	i = -1;

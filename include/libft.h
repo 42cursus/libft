@@ -20,12 +20,13 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "gnl.h"
-# include "ft_def.h"
-# include "ft_ctype.h"
-# include "ft_list.h"
-# include "ft_tab.h"
-# include "ft_string.h"
+# include "ft/gnl.h"
+# include "ft/ft_def.h"
+# include "ft/ft_ctype.h"
+# include "ft/ft_list.h"
+# include "ft/ft_tab.h"
+# include "ft/ft_string.h"
+# include "ft/ft_stdlib.h"
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -38,26 +39,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
-int		ft_atoi(const char *str);
-char	*ft_itoa(int nb);
-int		ft_nblen(int nbr);
-
-typedef struct s_object_arr	t_object_arr;
-struct s_object_arr
-{
-	const void	*base;
-	size_t		total_elems;
-	size_t		size;
-};
-void	ft_bsort(void *const base, size_t total_elems,
-			size_t size, __compar_fn_t cmp);
-void	ft_qsort(void *const base, size_t total_elems,
-			size_t size, __compar_fn_t cmp);
-void	*ft_bsearch(const void *key, t_object_arr *object_arr,
-			__compar_fn_t cmp);
-int		ft_atoi_base(char *str, char *base);
-char	*ft_itoa_buf(int nb, char *buf, size_t length);
-char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length);
 
 /* ---------- PRINTF -------------------- */
 int		ft_printf(const char *format, ...);

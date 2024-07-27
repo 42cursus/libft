@@ -25,7 +25,7 @@
  * 		the last compared byte in s2 from the last compared byte in s1.
  * 		(If the two characters are equal, this difference is 0.)
  */
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 == *s2++)
 		if (*s1++ == 0)

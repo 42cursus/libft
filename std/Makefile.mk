@@ -16,9 +16,9 @@ FILES   = ft_atoi.c \
            ft_bsort.c \
            ft_calloc.c \
            ft_itoa.c \
+           ft_lsearch.c \
            ft_nblen.c \
            ft_qsort.c \
            ft_strtol.c \
-           ft_strtoul.c
 
 SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

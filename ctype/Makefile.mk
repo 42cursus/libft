@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES   = ft_isctype.c \
+FILES   = ft_isalnum.c \
+			ft_isctype.c \
 			ft_isctype2.c
 
 SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
