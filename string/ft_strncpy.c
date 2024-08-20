@@ -20,13 +20,12 @@
  */
 char	*ft_strncpy(char *dest, const char *src, unsigned int n)
 {
-	const char		*s = src;
 	char *const		save_pointer = dest;
 	unsigned int	i;
 
 	i = 0;
-	while (*s && (i++ < n))
-		*dest++ = *s++;
+	while (*src && (i++ < n))
+		*dest++ = *src++;
 	while (i++ < n)
 		*dest++ = '\0';
 	return (save_pointer);

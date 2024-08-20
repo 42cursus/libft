@@ -32,3 +32,21 @@ char	*ft_strncat(char *dest, const char *src, unsigned int nb)
 	ft_strncpy(dest, src, nb);
 	return (save_pointer);
 }
+
+/**
+ * https://www.joelonsoftware.com/2001/12/11/back-to-basics/
+ */
+char	*ft_strnpcat(char *dest, const char *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (*dest)
+		dest++;
+	while (*src && (i++ < n))
+		*dest++ = *src++;
+	while (i++ < n)
+		*dest++ = '\0';
+	return (--dest);
+}
+
