@@ -49,4 +49,3 @@ char	*ft_strnpcat(char *dest, const char *src, size_t n)
 		*dest++ = '\0';
 	return (--dest);
 }
-

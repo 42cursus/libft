@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include "ft/ft_string.h"
 
 t_uint	ft_tab_get_size(void const **tab);
 
