@@ -36,4 +36,4 @@ FILES	= ft_bsdstr.c \
               ft_strtrim.c \
               ft_substr.c
 
-SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
+FT_SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

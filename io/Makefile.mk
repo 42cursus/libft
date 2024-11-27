@@ -23,4 +23,4 @@ FILES   = ft_fd1.c \
            ft_getline.c \
            ft_gnl_utils.c
 
-SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
+FT_SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

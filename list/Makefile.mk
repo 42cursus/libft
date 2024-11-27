@@ -39,4 +39,4 @@ FILES   = ft_list_at.c \
             ft_sorted_list_insert.c \
             ft_sorted_list_merge.c
 
-SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
+FT_SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)

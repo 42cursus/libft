@@ -11,49 +11,64 @@
 # **************************************************************************** #
 
 NAME			:= libft.a
+
+LIBFTSRCDIR		= $(CURDIR)
+BUILD_DIR		= build
+OBJDIR			= $(BUILD_DIR)/objs
+DEPDIR			= $(BUILD_DIR)/deps
+
 CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
-INCLUDE_FLAGS	:= -I. -I./include -I./include/ft -I/usr/include
+INCLUDE_FLAGS	:= -I. -I./include -I./include/ft
 DEBUG_FLAGS		:= -g3 -gdwarf-3
+DEPFLAGS		= -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 CTAGS			:= ctags
 LIB_COMMAND		:= ar rcs
 RM				:= /bin/rm
 
-LIBFTSRCDIR		= $(CURDIR)
-SRCS	 		:=
-DIRS			:= ctype io list std string tab
+include ./libft.mk
 
-include $(addsuffix /Makefile.mk,$(DIRS))
-
-BUILD_DIR		= build
-OBJS			= $(SRCS:%.c=%.o)
-BUILD_OBJS		= $(SRCS:%.c=$(BUILD_DIR)/%.o)
-ASM_FILES		= $(SRCS:.c=.s)
-
-all: $(NAME)
+BUILD_OBJS		= $(FT_SRCS:%.c=$(OBJDIR)/%.o)
+BUILD_DEPS		= $(FT_SRCS:%.c=$(DEPDIR)/%.d)
 
 # We need this for the output to go in the right place.  It will default to
 # empty if make was configured to work with a cc that can't grok -c and -o
 # together.  You can't compile the C library with such a compiler.
 OUTPUT_OPTION	= -o $@
 
-$(BUILD_DIR)/%.o:	%.c
-		@if [ ! -d $(@D) ]; then mkdir -pv $(@D); fi
-		$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+# https://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
+COMPILE.c		= $(CC) $(INCLUDE_FLAGS) $(DEPFLAGS) $(CFLAGS) \
+ 					$(DEBUG_FLAGS) $(TARGET_ARCH) -c
+
+$(OBJDIR)/%.o : %.c
+$(OBJDIR)/%.o : %.c $(DEPDIR)/%.d
+		@if [ ! -d $(@D) ]; then \
+  			mkdir -p $(@D); \
+			mkdir -p $(@D:$(OBJDIR)%=$(DEPDIR)%); fi
+		$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+all: $(NAME)
+
+$(BUILD_DEPS):
+
+# Include dependency files
+-include $(BUILD_DEPS)
 
 $(NAME): $(BUILD_OBJS)
-		$(LIB_COMMAND) $(NAME) $(BUILD_OBJS)
+		@$(LIB_COMMAND) $(NAME) $(BUILD_OBJS)
+		@echo "FTLIB BUILD COMPLETE!"
+
+.PHONY: all clean flean re norm
 
 clean:
-		$(RM) -f $(OBJS) $(ASM_FILES)
+		@$(RM) -f $(BUILD_OBJS)
+		@$(RM) -fr $(OBJDIR)
 
 fclean: clean
-		$(RM) -fr $(NAME) $(BUILD_DIR) a.out
+		@$(RM) -fr $(NAME) $(DEPDIR) $(BUILD_DIR) a.out
 
 re: fclean all
 
 norm:
 		@norminette --use-gitignore
-
-.PHONY: all clean flean re bonus norm $(BUILD_DIR)

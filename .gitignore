@@ -13,6 +13,7 @@
 libft.a
 main
 obj
+.deps
 build
 
 ### C template
