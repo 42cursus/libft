@@ -2,9 +2,52 @@
 <html>
 <head>
     <title>42 cursus Libft project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
 </head>
 <body>
 <h1>Welcome to 42 cursus Libft project</h1>
-<p>This is an initial startup page.</p>
+<p>Repository Structure</p>
+<div id="repo-structure">
+    Loading repository structure...
+</div>
+
+<script>
+    async function fetchRepoStructure() {
+        try {
+            // GitHub API to fetch repository contents
+            const repo = '42cursus/libft';
+            const apiUrl = `https://api.github.com/repos/${repo}/contents/`;
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            // Build and display the structure
+            const container = document.getElementById('repo-structure');
+            const list = document.createElement('ul');
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} (${item.type})`;
+                list.appendChild(listItem);
+            });
+            container.innerHTML = ''; // Clear loading message
+            container.appendChild(list);
+        } catch (error) {
+            document.getElementById('repo-structure').textContent =
+                'Failed to load repository structure.';
+            console.error(error);
+        }
+    }
+
+    // Fetch the repository structure when the page loads
+    fetchRepoStructure();
+</script>
 </body>
 </html>
