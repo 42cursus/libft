@@ -22,5 +22,6 @@ char	*ft_strdup(const char *const src)
 	new = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (!new)
 		return (NULL);
+	*new = '\0';
 	return (ft_strcpy(new, src));
 }

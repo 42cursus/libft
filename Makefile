@@ -23,8 +23,20 @@ INCLUDE_FLAGS	:= -I. -I./include -I./include/ft
 DEBUG_FLAGS		:= -g3 -gdwarf-3
 DEPFLAGS		= -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
+ifdef BUILD_WITH_ASAN
+DEBUG_FLAGS		:= -g3 -gdwarf-3 \
+					-fasynchronous-unwind-tables \
+					-fsanitize=address \
+					-fsanitize=undefined \
+					-fno-sanitize-recover \
+					-fsanitize=float-divide-by-zero \
+					-fsanitize=float-cast-overflow
+else
+DEBUG_FLAGS		:= -g3 -gdwarf-3
+endif
+
 CTAGS			:= ctags
-LIB_COMMAND		:= ar rcs
+LIB_COMMAND		:= ar rcsP
 RM				:= /bin/rm
 
 include ./libft.mk

@@ -34,6 +34,7 @@ static inline size_t	ft_strlen_all(char const **str_tab, size_t size)
 char	*ft_strjoin2(char const **strs, size_t nmemb, const char *sep)
 {
 	char	*new;
+	char	*p;
 	size_t	i;
 
 	if (nmemb <= 0)
@@ -41,8 +42,10 @@ char	*ft_strjoin2(char const **strs, size_t nmemb, const char *sep)
 	i = ft_strlen_all(strs, nmemb) + (ft_strlen(sep) * (nmemb - 1));
 	new = ft_strnew(i);
 	i = -1;
+	if (++i < nmemb)
+		p = ft_strpcat(new, strs[i]);
 	while (++i < nmemb)
-		ft_strcat(ft_strcat(new, strs[i]), sep);
+		p = ft_strpcat(ft_strpcat(p, sep), strs[i]);
 	return (new);
 }
 
