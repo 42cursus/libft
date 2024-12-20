@@ -14,7 +14,6 @@
 # define FT_CTYPE_H
 # include "ft_def.h"
 
-typedef unsigned int	t_uint;
 typedef struct s_convert
 {
 	int				neg;
