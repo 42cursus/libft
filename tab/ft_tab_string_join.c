@@ -31,7 +31,7 @@ static inline size_t	ft_strlen_all(char const **str_tab, size_t size)
  * size is the number of strings in strs.
  * if size is 0, returns an empty string that you can free().
  */
-char	*ft_strjoin2(char const **strs, size_t nmemb, const char *sep)
+char	*ft_tab_str_join(char const **strs, size_t nmemb, const char *sep)
 {
 	char	*new;
 	char	*p;
@@ -54,5 +54,5 @@ char	*ft_tab_string_join(char const **str_tab)
 	size_t	size;
 
 	size = ft_tab_get_size((const void **) str_tab);
-	return (ft_strjoin2(str_tab, size, " "));
+	return (ft_tab_str_join(str_tab, size, " "));
 }

@@ -33,7 +33,7 @@ char	*ft_strnew(size_t length);
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strjoin2(char const **strs, size_t nmemb, const char *sep);
+char	*ft_tab_str_join(char const **strs, size_t nmemb, const char *sep);
 char	*ft_strdup(const char *const src);
 void	*ft_calloc(size_t nmemb, size_t size);
 long	ft_strtol(const char *nptr, char **endptr, int base);
