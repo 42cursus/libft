@@ -29,8 +29,8 @@
 # include "ft/ft_stdlib.h"
 
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+void	ft_putstr_fd(const char *const s, int fd);
+void	ft_putendl_fd(const char *const s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(const char *str);
 void	ft_putstr_eol(const char *str, const char *eol);
@@ -43,16 +43,16 @@ void	*ft_memchr(const void *s, int c, size_t n);
 /* ---------- PRINTF -------------------- */
 int		ft_printf(const char *format, ...);
 
-typedef size_t				(*t_ft_print_dispatch_f)(va_list *ap);
+typedef size_t	(*t_ft_print_dispatch_f)(int fd, va_list *argp);
 
-size_t	ft_print_p(va_list *argp);
-size_t	ft_print_d(va_list *argp);
-size_t	ft_print_s(va_list *argp);
-size_t	ft_print_x(va_list *argp);
-size_t	ft_print_upperx(va_list *argp);
-size_t	ft_print_u(va_list *argp);
-size_t	ft_print_c(va_list *argp);
-size_t	ft_print_percent(va_list *argp);
+size_t	ft_print_p(int fd, va_list *argp);
+size_t	ft_print_d(int fd, va_list *argp);
+size_t	ft_print_s(int fd, va_list *argp);
+size_t	ft_print_x(int fd, va_list *argp);
+size_t	ft_print_upperx(int fd, va_list *argp);
+size_t	ft_print_u(int fd, va_list *argp);
+size_t	ft_print_c(int fd, va_list *argp);
+size_t	ft_print_percent(int fd, va_list *argp);
 
 char	*ft_uitoa(unsigned int nb);
 char	*ft_uitoa_base(unsigned int nb, const char *base);
