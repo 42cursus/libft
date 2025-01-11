@@ -29,7 +29,7 @@ char	*ft_itoa(int nb);
 int		ft_nblen(int nbr);
 int		ft_atoi_base(char *str, char *base);
 char	*ft_itoa_buf(int nb, char *buf, size_t length);
-char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length);
+char	*ft_uitoa_buf(unsigned int nb, char *buf, size_t length);
 
 void	ft_bsort(void *const base, size_t total_elems,
 			size_t size, __compar_fn_t cmp);

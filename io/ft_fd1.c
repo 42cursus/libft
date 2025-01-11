@@ -26,7 +26,7 @@ void	ft_putchar_fd(char c, int fd)
 /**
  * Outputs the string 's' to the given file descriptor.
  */
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(const char *const s, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0 || !s)
 		return ;
@@ -36,7 +36,7 @@ void	ft_putstr_fd(char *s, int fd)
 /**
  * Outputs the string 's' to the given file descriptor followed by a newline.
  */
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(const char *const s, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0 || !s)
 		return ;
