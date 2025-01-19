@@ -18,7 +18,6 @@ void	ft_putchar(char c)
 }
 
 int	do_print(const char	*fmt, va_list *argp,
-				void (*putc)(char),
 				t_ft_print_dispatch_f const	ft_print_dispatch[])
 {
 	size_t					i;
@@ -30,7 +29,7 @@ int	do_print(const char	*fmt, va_list *argp,
 	{
 		if (c != '%')
 		{
-			(*putc)(c);
+			ft_putchar(c);
 			i++;
 			c = *++fmt;
 			continue ;
@@ -68,7 +67,7 @@ int	ft_printf(const char *format, ...)
 	if (!str || *str == '\0')
 		return (0);
 	va_start(args, format);
-	count = do_print(str, &args, ft_putchar, ft_print_dispatch);
+	count = do_print(str, &args, ft_print_dispatch);
 	va_end(args);
 	free(str);
 	return (count);

@@ -12,16 +12,18 @@
 
 #include "libft.h"
 #include <stdlib.h>
+#include <errno.h>
 
 char	*ft_strdup(const char *const src)
 {
 	char	*new;
 
-	if (src == NULL)
-		return (NULL);
 	new = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (!new)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	*new = '\0';
 	return (ft_strcpy(new, src));
 }

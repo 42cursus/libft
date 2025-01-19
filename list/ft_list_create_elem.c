@@ -29,3 +29,8 @@ t_list	*ft_list_create_elem(void *data)
 	elem->next = NULL;
 	return (elem);
 }
+
+t_list	*ft_lstnew(void *data)
+{
+	return (ft_list_create_elem(data));
+}

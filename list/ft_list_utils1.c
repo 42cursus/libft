@@ -59,20 +59,3 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (lst);
 }
-
-/**
- * Allocates (with malloc(3)) and returns a new node.
- * The member variable 'data' is initialized with the value of the parameter
- * 'data'. The variable 'next' is initialized to NULL.
- */
-t_list	*ft_list_create_elem(void *data)
-{
-	t_list	*elem;
-
-	elem = (t_list *)malloc(sizeof(*elem));
-	if (!elem)
-		return (NULL);
-	elem->data = data;
-	elem->next = NULL;
-	return (elem);
-}

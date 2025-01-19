@@ -23,5 +23,6 @@ static inline unsigned int	ft_strlen(const char *str)
 
 void	ft_putstr(const char *str)
 {
-	write(STDOUT_FILENO, str, ft_strlen(str));
+	if (str)
+		write(STDOUT_FILENO, str, ft_strlen(str));
 }

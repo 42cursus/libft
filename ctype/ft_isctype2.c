@@ -34,7 +34,7 @@ int	ft_islower(int c)
  */
 int	ft_toupper(int c)
 {
-	if (!((c >= 'A') && (c <= 'Z')))
+	if (!((c >= 'a') && (c <= 'z')))
 		return (c);
 	return (c - 'a' + 'A');
 }
