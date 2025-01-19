@@ -55,6 +55,6 @@ char	*ft_uitoa(unsigned int nb)
 	buf = (char *)malloc(sizeof(char) * buf_size);
 	if (!buf)
 		return (NULL);
-	ft_bzero(buf, buf_size);
+	ft_memset(buf, 0, buf_size * sizeof(char));
 	return (ft_ultoa_buf_base(nb, buf, buf_size, base));
 }

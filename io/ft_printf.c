@@ -12,63 +12,48 @@
 
 #include "libft.h"
 
-void	ft_putchar(char c)
-{
-	ft_putchar_fd(c, STDOUT_FILENO);
-}
-
-int	do_print(const char	*fmt, va_list *argp,
-				t_ft_print_dispatch_f const	ft_print_dispatch[])
-{
-	size_t					i;
-	register char			c;
-
-	i = 0;
-	c = *fmt;
-	while (c != '\0')
-	{
-		if (c != '%')
-		{
-			ft_putchar(c);
-			i++;
-			c = *++fmt;
-			continue ;
-		}
-		c = *++fmt;
-		if (c != '\0' && ft_print_dispatch[(unsigned char) c])
-			i += ft_print_dispatch[(unsigned char) c](argp);
-		else
-			fmt--;
-		c = *++fmt;
-	}
-	return (i);
-}
-
 int	ft_printf(const char *format, ...)
 {
-	va_list								args;
-	char								*str;
-	int									count;
-	static t_ft_print_dispatch_f const	ft_print_dispatch[UCHAR_MAX] = {
-	['c'] = ft_print_c,
-	['%'] = ft_print_percent,
-	['d'] = ft_print_d,
-	['p'] = ft_print_p,
-	['i'] = ft_print_d,
-	['u'] = ft_print_u,
-	['x'] = ft_print_x,
-	['X'] = ft_print_upperx,
-	['s'] = ft_print_s,
-	};
+	va_list	ap;
+	int		count;
 
 	if (!format || !*format)
 		return (0);
-	str = ft_strdup((char *)format);
-	if (!str || *str == '\0')
-		return (0);
-	va_start(args, format);
-	count = do_print(str, &args, ft_print_dispatch);
-	va_end(args);
-	free(str);
+	va_start(ap, format);
+	count = ft_vprintf(format, ap);
+	va_end(ap);
+	return (count);
+}
+
+int	ft_sprintf(char *str, const char *format, ...)
+{
+	va_list	ap;
+	int		count;
+
+	va_start(ap, format);
+	count = ft_vsprintf(str, format, ap);
+	va_end(ap);
+	return (count);
+}
+
+int	ft_snprintf(char *str, size_t size, const char *format, ...)
+{
+	va_list	ap;
+	int		count;
+
+	va_start(ap, format);
+	count = ft_vsnprintf(str, size, format, ap);
+	va_end(ap);
+	return (count);
+}
+
+int	ft_dprintf(int fd, const char *format, ...)
+{
+	va_list	ap;
+	int		count;
+
+	va_start(ap, format);
+	count = ft_vdprintf(fd, format, ap);
+	va_end(ap);
 	return (count);
 }

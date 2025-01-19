@@ -14,12 +14,15 @@
 
 size_t	get_hex_buf_size(unsigned long long int nb)
 {
-	unsigned long	size;
-	int const		hexadecimal_radix = 16;
+	ulong		size;
+	int const	hexadecimal_radix = 16;
 
 	size = !nb;
-	while (size++, nb)
+	while (nb)
+	{
 		nb /= hexadecimal_radix;
+		size++;
+	}
 	return (++size);
 }
 
@@ -48,7 +51,7 @@ char	*ft_print_pointer(unsigned long long nb)
 	if (!buf)
 		return (NULL);
 	buf[buf_size + 1] = '\0';
-	if (nb == 0 && ft_memcpy(buf, "(nil)", buf_size + 1))
+	if (nb == 0 && ft_memcpy(buf, PTRNULL, buf_size + 1))
 		return (buf);
 	ft_memset(buf, '0', buf_size);
 	buf[1] = 'x';
