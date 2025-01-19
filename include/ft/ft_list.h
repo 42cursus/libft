@@ -21,6 +21,7 @@ struct s_list
 	{
 		char	*str;
 		void	*data;
+		void	*content;
 		int		nbr;
 	};
 	t_list	*next;
@@ -47,6 +48,7 @@ typedef struct s_list_fun
 	void		*(*dup_fun)(void *);
 }	t_list_fun;
 
+t_list	*ft_lstnew(void *data);
 t_list	*ft_list_create_elem(void *content);
 void	ft_list_destroy(t_list **list, void (*del_fun)(void *));
 void	ft_lstadd_back(t_list **alst, t_list *new);

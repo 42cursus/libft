@@ -71,7 +71,16 @@ $(NAME): $(BUILD_OBJS)
 		@$(LIB_COMMAND) $(NAME) $(BUILD_OBJS)
 		@echo "FTLIB BUILD COMPLETE!"
 
-.PHONY: all clean flean re norm
+.PHONY: all clean flean re norm so
+
+bonus: .bonus
+
+.bonus:
+	@touch $@
+
+#so: $(BUILD_OBJS)
+#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(DEBUG_FLAGS) $(FT_SRCS) $(INCLUDE_FLAGS)
+#	gcc -nostartfiles -shared $(DEBUG_FLAGS) -o libft.so $(BUILD_OBJS)
 
 clean:
 		@$(RM) -f $(BUILD_OBJS)

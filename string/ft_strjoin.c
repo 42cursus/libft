@@ -12,6 +12,7 @@
 
 #include <malloc.h>
 #include "ft_string.h"
+#include <errno.h>
 
 /**
  * Allocates (with malloc(3)) and returns a new string, which is the result
@@ -30,7 +31,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	new = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	*new = '\0';
 	ft_strpcat(ft_strpcat(new, s1), s2);
 	return (new);

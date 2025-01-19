@@ -11,20 +11,27 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 
 /**
  * The ft_strndup() function is similar to ft_strdup, but copies at most nb
  * bytes. If s is longer than nb, only nb bytes are copied,
  * and a terminating null byte ('\0') is added.
+ *
+ * ERRORS
+ * 		ENOMEM Insufficient memory available to allocate duplicate string.
  */
 char	*ft_strndup(const char *src, unsigned int nb)
 {
-	char	*dst;
+	char	*new;
 
-	if (!src)
+	new = (char *)malloc(sizeof(char) * (nb + 1));
+	if (!new)
+	{
+		errno = ENOMEM;
 		return (NULL);
-	dst = ft_strnew(ft_strlen(src));
-	if (!dst)
-		return (NULL);
-	return (ft_strncpy(dst, src, nb));
+	}
+	new[nb] = '\0';
+	ft_strncpy(new, src, nb);
+	return (new);
 }

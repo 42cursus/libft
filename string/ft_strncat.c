@@ -10,27 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
 #include "ft_string.h"
 
 /**
  * The  ft_strncat() function  appends at most n bytes from src string to
  * the dest string, overwriting the terminating null byte ('\0') at the end
  * of dest, and then adds a terminating null byte. The strings may not overlap,
- * and the dest string must have enough space for the result. The src does not
- * need to be null-terminated if it contains n or more bytes.
+ * and the dest string must have enough space for the result.
+ * The src does not need to be null-terminated if it contains n or more bytes.
  * The resulting string in dest is always null-terminated.
  * If  src  contains  n or more bytes, strncat() writes n+1 bytes to dest
  * (n from src plus the terminating null byte).
  * Therefore, the size of dest must be at least strlen(dest)+n+1.
  */
-char	*ft_strncat(char *dest, const char *src, unsigned int nb)
+char	*ft_strncat(char *d, const char *src, u_int n)
 {
-	char *const		save_pointer = dest;
+	char *const	dst = d;
+	const char	*s = src;
 
-	while (*dest)
-		dest++;
-	ft_strncpy(dest, src, nb);
-	return (save_pointer);
+	if (n != 0)
+	{
+		while (*d != 0)
+			d++;
+		while (n--)
+		{
+			*d = *s++;
+			if (*d == '\0')
+				break ;
+			d++;
+		}
+		*d = 0;
+	}
+	return (dst);
 }
 
 /**
