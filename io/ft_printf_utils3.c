@@ -38,20 +38,14 @@ size_t	ft_snprint_p(char **buf, size_t size, va_list *ap)
 size_t	ft_snprint_d(char **buf, size_t size, va_list *ap)
 {
 	size_t		i;
-	char		*str;
+	char		str[20];
 	size_t		desired;
 	const int	nb = va_arg(*ap, int);
 
-	str = ft_itoa(nb);
-	if (!str)
-	{
-		free(str);
-		return (0);
-	}
+	ft_itoa_buf(nb, str, 20);
 	i = ft_strlen(str);
 	desired = MIN(i + FT_TERMINATOR, size);
 	ft_memcpy(*buf, str, desired * sizeof(char));
-	free(str);
 	if (*buf)
 		(*buf) += desired - 1;
 	return (i);

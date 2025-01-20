@@ -12,19 +12,33 @@
 
 #include "libft.h"
 
-char	*ft_uitoa_buf(unsigned int abs, char *buf, size_t length)
-{
-	char				*ptr;
-	unsigned int const	decimal_radix = 10;
+#define NUMBER_BASE "0123456789"
 
-	ptr = buf + length - 1;
-	*ptr-- = '\0';
-	while (abs >= decimal_radix)
+char	*ft_uitoa_buf(unsigned int nb, char *buf, size_t length)
+{
+	size_t				sp;
+	unsigned int		stack[20];
+	char				*ptr;
+	const char			*base = NUMBER_BASE;
+	const unsigned int	radix = sizeof(NUMBER_BASE) - 1;
+
+	sp = 0;
+	ptr = buf;
+	stack[sp++] = nb;
+	while (sp)
 	{
-		*ptr-- = (abs % decimal_radix) + '0';
-		abs /= decimal_radix;
+		nb = stack[--sp];
+		stack[sp] = 0;
+		if (nb >= radix)
+		{
+			stack[sp++] = nb % radix;
+			stack[sp++] = nb / radix;
+		}
+		else if (length - 1 && length--)
+			*ptr++ = base[nb];
 	}
-	*ptr-- = abs + '0';
+	if (length)
+		*ptr = '\0';
 	return (buf);
 }
 

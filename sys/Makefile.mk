@@ -1,16 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    libft.mk                                           :+:      :+:    :+:    #
+#    Makefile.mk                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/25 00:07:18 by abelov            #+#    #+#              #
-#    Updated: 2024/11/25 00:24:33 by abelov           ###   ########.fr        #
+#    Created: 2023/12/16 02:54:14 by abelov            #+#    #+#              #
+#    Updated: 2024/06/14 17:49:43 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FT_SRCS	 		:=
-FT_DIRS			:= ctype io list std string sys tab
+FILES   = ft_exit.c \
+           ft_getpid.c \
+           ft_getrandom.c \
+           ft_syscall.c
 
-include $(FT_DIRS:%=$(LIBFT_PREFIX)%/Makefile.mk)
+FT_SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
