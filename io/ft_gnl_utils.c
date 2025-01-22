@@ -55,7 +55,7 @@ void	*ft_reallocarray(void *ptr,
 			return (NULL);
 		return (ptr);
 	}
-	if ((oldsize / size) != oldsize || ((newsize / size) != newsize))
+	if ((oldsize / size) != oldnmemb || ((newsize / size) != newnmemb))
 		return (NULL);
 	new_ptr = malloc(newsize);
 	if (!new_ptr)

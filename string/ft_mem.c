@@ -29,10 +29,12 @@ void	*ft_memset(void *s, int c, size_t n)
 /**
  * The ft_memcpy() copies n bytes from memory area src to memory area dest.
  * The memory areas must not overlap otherwise use ft_memmove().
+ *
  * ISO/IEC 9899:2023 Programming languages - C
  * https://news.ycombinator.com/item?id=36451907
- * https://stackoverflow.com/
- * questions/54964262/implement-memcpy-is-unsigned-char-needed-or-just-char
+ *
+ * https://stackoverflow.com/questions/54964262/
+ * 	Implement `memcpy()`: Is `unsigned char *` needed, or just `char *`?
  */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

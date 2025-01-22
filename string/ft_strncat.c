@@ -20,9 +20,9 @@
  * and the dest string must have enough space for the result.
  * The src does not need to be null-terminated if it contains n or more bytes.
  * The resulting string in dest is always null-terminated.
- * If  src  contains  n or more bytes, strncat() writes n+1 bytes to dest
+ * If  src  contains  n or more bytes, ft_strncat() writes n+1 bytes to dest
  * (n from src plus the terminating null byte).
- * Therefore, the size of dest must be at least strlen(dest)+n+1.
+ * Therefore, the size of dest must be at least ft_strlen(dest)+n+1.
  */
 char	*ft_strncat(char *d, const char *src, u_int n)
 {
