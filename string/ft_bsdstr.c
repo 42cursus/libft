@@ -46,14 +46,9 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
  */
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	const size_t	osize = size;
-	char *const		odest = dest;
-	size_t			dest_len;
+	const size_t	dest_len = ft_strnlen(dest, size);
 
-	while (size-- && *dest)
-		dest++;
-	dest_len = dest - odest;
-	if (dest_len >= osize)
-		return (osize + ft_strlen(src));
-	return (dest_len + ft_strlcpy(dest, src, osize - dest_len));
+	if (dest_len == size)
+		return (size + ft_strlen(src));
+	return (dest_len + ft_strlcpy(dest + dest_len, src, size - dest_len));
 }
