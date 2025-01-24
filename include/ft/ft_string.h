@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include "ft_def.h"
 
+size_t	ft_strnlen(const char *s, size_t maxlen);
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int chr);
