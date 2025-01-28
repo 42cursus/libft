@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdint.h>
+#include <errno.h>
 
 /**
  * The ft_calloc() function allocates memory for an array of nmemb elementqs of
@@ -40,10 +41,16 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	bytes = nmemb * size;
 	if ((bytes / size) != nmemb)
+	{
+		errno = EINVAL;
 		return (NULL);
+	}
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
-		return (ptr);
+	{
+		errno = ENOMEM;
+		return (NULL);
+	}
 	ft_bzero(ptr, size * nmemb);
 	return (ptr);
 }
