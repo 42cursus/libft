@@ -58,7 +58,7 @@ $(OBJDIR)/%.o : %.c $(DEPDIR)/%.d
 		@if [ ! -d $(@D) ]; then \
   			mkdir -p $(@D); \
 			mkdir -p $(@D:$(OBJDIR)%=$(DEPDIR)%); fi
-		$(COMPILE.c) $(OUTPUT_OPTION) $<
+		@$(COMPILE.c) $(OUTPUT_OPTION) $<
 
 all: $(NAME)
 
