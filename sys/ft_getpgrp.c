@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getpid.c                                        :+:      :+:    :+:   */
+/*   ft_getpgrp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 01:43:51 by abelov            #+#    #+#             */
-/*   Updated: 2025/01/20 01:43:52 by abelov           ###   ########.fr       */
+/*   Created: 2025/02/02 23:04:26 by abelov            #+#    #+#             */
+/*   Updated: 2025/02/02 23:04:27 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
+#include <fcntl.h>
 #include <asm/unistd.h>
+#include <errno.h>
 
 /**
- * @return the process ID (PID) of the calling process.
- * This function is always successful.
+ * The POSIX.1 getpgrp() always returns the PGID of the caller.
+ * @return the PGID of the calling process
  */
-pid_t	ft_getpid(void)
+pid_t	ft_getpgrp(void)
 {
-	register int	res;
+	pid_t	res;
 
 	__asm__ volatile (
 		"syscall"
 		: "=a" (res) :
-		"a" (__NR_getpid)
+		"a" (__NR_getpgrp)
 		: "rcx", "r11", "memory");
 	return (res);
 }

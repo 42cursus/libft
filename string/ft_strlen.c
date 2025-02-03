@@ -24,7 +24,7 @@ size_t	ft_strnlen(const char *s, size_t maxlen)
 
 	retval = maxlen;
 	if (found)
-		retval = (size_t) (found - s);
+		retval = (size_t)(found - s);
 	return (retval);
 }
 

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getpid.c                                        :+:      :+:    :+:   */
+/*   ft_setpgrp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 01:43:51 by abelov            #+#    #+#             */
-/*   Updated: 2025/01/20 01:43:52 by abelov           ###   ########.fr       */
+/*   Created: 2025/02/02 23:21:12 by abelov            #+#    #+#             */
+/*   Updated: 2025/02/02 23:21:13 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
 #include <asm/unistd.h>
+#include <errno.h>
 
 /**
- * @return the process ID (PID) of the calling process.
- * This function is always successful.
+ * equivalent to ft_setpgid(0, 0).
  */
-pid_t	ft_getpid(void)
+int	ft_setpgrp(void)
 {
 	register int	res;
 
 	__asm__ volatile (
 		"syscall"
-		: "=a" (res) :
-		"a" (__NR_getpid)
+		: "=a" (res)
+		: "a" (__NR_setpgid), "D" (0), "S" (0)
 		: "rcx", "r11", "memory");
+	if (res < 0)
+	{
+		errno = (int)-res;
+		res = (-1);
+	}
 	return (res);
 }

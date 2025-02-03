@@ -51,6 +51,8 @@ int	ft_syscall3(int num, int arg1, long arg2, int arg3)
  *
  * Use the syscall instruction (direct syscall implementation).
  * Get up to 6 arguments (Linux syscall ABI typically supports up to 6 args)
+ *
+ * @see https://fschoenberger.dev/syscalls-by-hand/
  */
 long	ft_syscall_x64(long num, ...)
 {

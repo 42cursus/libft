@@ -11,8 +11,14 @@
 # **************************************************************************** #
 
 FILES   = ft_exit.c \
-           ft_getpid.c \
-           ft_getrandom.c \
-           ft_syscall.c
+			ft_getpgid.c \
+			ft_getpgrp.c \
+			ft_getpid.c \
+			ft_getrandom.c \
+			ft_read.c \
+			ft_setpgid.c \
+			ft_setpgrp.c \
+			ft_sigprocmask.c \
+			ft_syscall.c
 
 FT_SRCS    += $(FILES:%.c=$(dir $(lastword $(MAKEFILE_LIST)))%.c)
