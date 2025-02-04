@@ -14,6 +14,7 @@ FILES   = ft_exit.c \
 			ft_getpgid.c \
 			ft_getpgrp.c \
 			ft_getpid.c \
+			ft_getppid.c \
 			ft_getrandom.c \
 			ft_read.c \
 			ft_setpgid.c \

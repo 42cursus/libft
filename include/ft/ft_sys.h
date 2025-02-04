@@ -19,6 +19,7 @@ void	ft_exit(int exit_code);
 pid_t	ft_getpgid(pid_t pid);
 pid_t	ft_getpgrp(void);
 pid_t	ft_getpid(void);
+pid_t	ft_getppid(void);
 ssize_t	ft_getrandom(void *buffer, size_t length, unsigned int flags);
 ssize_t	ft_read(int fd, void *buf, size_t nbytes);
 int		ft_setpgid(pid_t pid, pid_t pgid);
