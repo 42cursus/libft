@@ -43,3 +43,16 @@ void	ft_putendl_fd(const char *const s, int fd)
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
+
+/**
+ * Outputs at most nbytes from the buffer 's' to the given file descriptor.
+ * @param s
+ * @param nbytes
+ * @param fd
+ */
+void	ft_putbyte_fd(const char *const s, size_t nbytes, int fd)
+{
+	if (fd > SHRT_MAX || fd < 0 || !s)
+		return ;
+	write(fd, s, nbytes);
+}

@@ -32,6 +32,7 @@
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(const char *const s, int fd);
 void	ft_putendl_fd(const char *const s, int fd);
+void	ft_putbyte_fd(const char *const s, size_t nbytes, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(const char *str);
 void	ft_putstr_eol(const char *str, const char *eol);

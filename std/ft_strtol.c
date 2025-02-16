@@ -37,7 +37,7 @@ long	ft_strtol(const char *nptr, char **endptr, register int base)
 	while (ft_isspace((unsigned char )*nptr))
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
-		if (*++nptr == '-')
+		if (*nptr++ == '-')
 			result->neg *= -1;
 	c = (unsigned char )*nptr++;
 	base = ft_strtol_check_base(base, &nptr, &c);

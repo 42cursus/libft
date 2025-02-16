@@ -27,7 +27,7 @@ int	ft_vprintf(const char *format, va_list ap)
 	if (string)
 	{
 		ft_vsnprintf(string, count + FT_TERMINATOR, format, ap_copy);
-		ft_putstr_fd(string, STDOUT_FILENO);
+		ft_putbyte_fd(string, count, STDOUT_FILENO);
 	}
 	free(string);
 	return (count);
