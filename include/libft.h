@@ -29,6 +29,8 @@
 # include "ft/ft_sys.h"
 # include "ft/ft_tab.h"
 
+# define MAX_STACK_SIZE 8192
+
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(const char *const s, int fd);
 void	ft_putendl_fd(const char *const s, int fd);

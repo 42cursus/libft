@@ -21,6 +21,7 @@ size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int chr);
 char	*ft_strrchr(const char *s, int chr);
+char	*ft_strchrnul(const char *s, int c);
 size_t	ft_strstr_fixed(char *haystack, char *words[]);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, const char *src, unsigned int n);
