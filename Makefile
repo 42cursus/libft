@@ -17,8 +17,8 @@ BUILD_DIR		= build
 OBJDIR			= $(BUILD_DIR)/objs
 DEPDIR			= $(BUILD_DIR)/deps
 
-CC				:= cc
-CFLAGS			:= -Wall -Wextra -Werror -Wimplicit
+CC				:= clang
+CFLAGS			:= -Wall -Wextra -Werror -Wimplicit -pg -O3
 INCLUDE_FLAGS	:= -I. -I./include -I./include/ft
 DEBUG_FLAGS		:= -g3 -gdwarf-3
 DEPFLAGS		= -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
