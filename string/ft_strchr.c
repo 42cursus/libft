@@ -50,3 +50,14 @@ char	*ft_strrchr(const char *s, int chr)
 		return ((char *)s);
 	return (NULL);
 }
+
+char	*ft_strchrnul(const char *s, int c)
+{
+	while (*s)
+	{
+		if ((unsigned char) *s == (unsigned char) c)
+			break ;
+		s++;
+	}
+	return ((char *)s);
+}

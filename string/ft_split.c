@@ -12,93 +12,50 @@
 
 #include "libft.h"
 
-static size_t	ft_count_words(char const *s, char c)
+char	**alloc_memory(const char *(*stack)[2], int sp)
 {
-	size_t	words;
+	int		i;
+	char	**result;
 
-	words = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (*s)
-		{
-			words++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (words);
-}
-
-static char	*ft_get_word(char *word, char c)
-{
-	char	*start;
-
-	start = word;
-	while (*word && *word != c)
-		word++;
-	*word = '\0';
-	return (ft_strdup(start));
-}
-
-static char	**ft_free_words(char **words, size_t i)
-{
-	while (i--)
-	{
-		if (&(words[i]) && *&(words[i]))
-		{
-			free(*&(words[i]));
-			*&(words[i]) = NULL;
-		}
-	}
-	free(*words);
-	return (NULL);
-}
-
-static char	**ft_get_words(char *s, char c, size_t words_count)
-{
-	char	**words;
-	char	*word;
-	size_t	i;
-
-	i = 0;
-	words = (char **)ft_calloc((words_count + 1), sizeof(char *));
-	if (!words)
+	result = (char **)malloc((sp + 1) * sizeof(char *));
+	if (!result)
 		return (NULL);
-	while (i < words_count)
+	i = -1;
+	while (++i < sp)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		result[i] = ft_strndup(stack[i][0], (stack[i][1] - stack[i][0]));
+		if (result[i] == NULL)
 		{
-			word = ft_get_word(s, c);
-			if (!word)
-				return (ft_free_words(words, i));
-			words[i++] = word;
-			s += (ft_strlen(word) + 1);
+			while (i-- > 0)
+				free(result[i]);
+			return (free(result[i]), NULL);
 		}
 	}
-	words[i] = NULL;
-	return (words);
+	result[sp] = NULL;
+	return (result);
 }
 
-/**
- * Allocates (with malloc(3)) and returns an array of strings obtained by
- * splitting 's' using the character 'c' as a delimiter.
- * The array must end with a NULL pointer.
- */
 char	**ft_split(char const *s, char c)
 {
-	char	**words;
-	char	*line;
+	int			i;
+	int			sp;
+	const char	*stack[MAX_STACK_SIZE][2];
 
+	i = 0;
 	if (!s)
-		return (NULL);
-	line = ft_strdup((char *)s);
-	if (!line)
-		return (NULL);
-	words = ft_get_words(line, c, ft_count_words(line, c));
-	free(line);
-	return (words);
+		return ((char **)ft_calloc(1, sizeof(char *)));
+	sp = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
+		{
+			stack[sp][0] = &s[i];
+			stack[sp][1] = ft_strchrnul(&s[i], c);
+			i += (int)(stack[sp][1] - stack[sp][0]);
+			sp++;
+		}
+	}
+	return (alloc_memory(stack, sp));
 }

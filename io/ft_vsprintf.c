@@ -23,17 +23,6 @@ int	ft_vsprintf(char *str, const char *format, va_list ap)
 	return (ft_vsnprintf(str, (size_t)result + 1, format, ap));
 }
 
-char	*ft_strchrnul(const char *s, int c)
-{
-	while (*s)
-	{
-		if ((unsigned char) *s == (unsigned char) c)
-			break ;
-		s++;
-	}
-	return ((char *)s);
-}
-
 size_t	copy_as_is(size_t size, const char **fmt, char **buf)
 {
 	const char *const	ptr = ft_strchrnul((*fmt), '%');
