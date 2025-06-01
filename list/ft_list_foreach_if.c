@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 static t_list	*ft_lst_get_next(t_list *list, const t_list **list_ptr)
 {

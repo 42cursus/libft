@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_lists.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#ifndef FT_LISTS_H
+# define FT_LISTS_H
 # include <stdlib.h>
 
 typedef struct s_list	t_list;
@@ -94,4 +94,4 @@ void	ft_list_remove_sublist(t_list **list, t_list *sub_list,
 			__compar_fn_t cmp, void (*del_fun)(void *));
 void	ft_list_replace_sublist(t_list **list, t_list *to_find,
 			t_list *to_replace_with, t_list_fun *lst_fun);
-#endif //FT_LIST_H
+#endif //FT_LISTS_H

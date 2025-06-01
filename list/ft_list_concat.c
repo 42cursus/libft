@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * takes two lists and combines them into a single list.

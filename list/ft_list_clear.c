@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Deletes and frees the given node and every successor of that node,

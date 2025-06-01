@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 t_list	*ft_list_find(t_list *list, void *data_ref,
 						int (*cmp)(void *, void *))

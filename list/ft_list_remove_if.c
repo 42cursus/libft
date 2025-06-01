@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * removes from the list, all elements whose data compared to data_ref

@@ -12,7 +12,7 @@
 
 #include <stddef.h>
 #include <stdbool.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Swapping two nodes usually takes five operations:

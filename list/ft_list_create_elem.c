@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Allocates (with malloc(3)) and returns a new list node.
