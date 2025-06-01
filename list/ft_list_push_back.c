@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_lists.h"
 
 void	ft_list_push_back(t_list **list, void *data)
 {
