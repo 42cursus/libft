@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Creates a new list that includes all string pointed by the element in strs.

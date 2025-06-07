@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Adds the node 'new' at the front of the list.
