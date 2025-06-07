@@ -58,3 +58,26 @@ size_t	ft_snprint_u(char **buf, size_t size, va_list *ap)
 		(*buf) += desired - 1;
 	return (i);
 }
+
+size_t	ft_snprint_w(char **buf, size_t size, va_list *ap)
+{
+	size_t		i;
+	char		str[20];
+	size_t		desired;
+	const int	nb = va_arg(*ap, int);
+
+	ft_itoa_buf(nb, str, 20);
+	i = ft_strlen(str);
+	if (i < 2)
+	{
+		str[1] = str[0];
+		str[0] = '0';
+		str[2] = '\0';
+		i++;
+	}
+	desired = MIN(i + FT_TERMINATOR, size);
+	ft_memcpy(*buf, str, desired * sizeof(char));
+	if (*buf)
+		(*buf) += desired - 1;
+	return (i);
+}
