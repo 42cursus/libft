@@ -82,6 +82,7 @@ int	ft_vsnprintf(char *str, size_t size, const char *fmt, va_list ap)
 	['x'] = ft_snprint_x,
 	['X'] = ft_snprint_upperx,
 	['s'] = ft_snprint_s,
+	['w'] = ft_snprint_w,
 	};
 
 	va_copy(ap_save, ap);
