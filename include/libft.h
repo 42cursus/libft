@@ -88,6 +88,7 @@ size_t	ft_snprint_p(char **buf, size_t size, va_list *ap);
 size_t	ft_snprint_u(char **buf, size_t size, va_list *ap);
 size_t	ft_snprint_percent(char **buf, size_t size, va_list *ap);
 size_t	ft_snprint_c(char **buf, size_t size, va_list *ap);
+size_t	ft_snprint_w(char **buf, size_t size, va_list *ap);
 
 char	*ft_uitoa(unsigned int nb);
 char	*ft_uitoa_base(unsigned int nb, const char *base);
