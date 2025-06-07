@@ -29,7 +29,7 @@ int		ft_string_tab_is_sort(char **tab, int (*f)(const char *, const char *));
 void	ft_sort_string_tab_fun(char **tab,
 			int (*cmp)(const char *, const char *));
 int		*ft_tab_int_init(int len);
-int		*ft_copy_int_tab(int *src, int *dst, int start, int end);
+int		*ft_copy_int_tab(const int *src, int *dst, int start, int end);
 int		ft_tab_int_get_index(int const *tab, int start, int end, int to_find);
 int		ft_tab_int_contains(int const *tab, int size, int to_find);
 

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "ft_list.h"
+#include "ft_lists.h"
 
 /**
  * Creates a copy of the list

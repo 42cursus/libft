@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_lists.h"
 
 void	ft_sorted_list_insert(t_list **list, void *data,
 								int (*cmp)(void *, void *))

@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include "ft_string.h"
-#include "ft_list.h"
+#include "ft_lists.h"
 
 void	remove_nodes(t_list *parent, t_list *sub_list, void (*del_fun)(void *));
 
