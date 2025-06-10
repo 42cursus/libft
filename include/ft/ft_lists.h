@@ -89,7 +89,6 @@ void	ft_sorted_list_insert(t_list **list, void *data,
 			int (*cmp)(void *, void *));
 void	ft_sorted_list_merge(t_list **list1, t_list *list2,
 			int (*cmp)(void *, void *));
-void	ft_list_reverse_fun(t_list *list);
 void	ft_list_remove_sublist(t_list **list, t_list *sub_list,
 			__compar_fn_t cmp, void (*del_fun)(void *));
 void	ft_list_replace_sublist(t_list **list, t_list *to_find,
