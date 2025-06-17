@@ -18,9 +18,9 @@
  * Returns a pointer to the beginning of the located substring, or NULL
  * if the substring is not found.
  */
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strstr(char *str, const char *to_find)
 {
-	char *const	save = to_find;
+	const char	*save = to_find;
 	char		*s;
 
 	if (!ft_strlen(to_find))

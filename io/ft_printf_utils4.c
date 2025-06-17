@@ -15,10 +15,9 @@
 
 size_t	ft_snprint_c(char **buf, size_t size, va_list *ap)
 {
-	size_t		desired;
-	char *const	str = (char [2]){va_arg(*ap, int), '\0'};
+	const size_t	desired = MIN(1 + FT_TERMINATOR, size);
+	char *const		str = (char [2]){va_arg(*ap, int), '\0'};
 
-	desired = MIN(1 + FT_TERMINATOR, size);
 	ft_memcpy(*buf, str, desired * sizeof (char));
 	if (*buf && desired)
 		(*buf) += desired - 1;
@@ -27,10 +26,9 @@ size_t	ft_snprint_c(char **buf, size_t size, va_list *ap)
 
 size_t	ft_snprint_percent(char **buf, size_t size, va_list *ap)
 {
-	size_t		desired;
-	char *const	str = (char [2]){'%', '\0'};
+	const size_t	desired = MIN(1 + FT_TERMINATOR, size);
+	char *const		str = (char [2]){'%', '\0'};
 
-	desired = MIN(1 + FT_TERMINATOR, size);
 	ft_memcpy(*buf, str, desired * sizeof(char));
 	if (*buf && desired)
 		(*buf) += desired - 1;

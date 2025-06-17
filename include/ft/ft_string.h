@@ -30,7 +30,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strncat(char *dest, const char *src, unsigned int nb);
 char	*ft_strnpcat(char *dest, const char *src, size_t n);
 char	*ft_strndup(const char *src, unsigned int nb);
-char	*ft_strstr(char *str, char *to_find);
+char	*ft_strstr(char *str, const char *to_find);
 char	*ft_strnew(size_t length);
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);

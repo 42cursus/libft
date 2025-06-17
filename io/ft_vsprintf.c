@@ -15,63 +15,89 @@
 
 int	ft_vsprintf(char *str, const char *format, va_list ap)
 {
-	int	result;
+	int		result;
+	va_list	ap_save;
 
+	va_copy(ap_save, ap);
 	result = ft_vsnprintf(NULL, 0, format, ap);
 	if (result < 0)
 		return (FT_ERROR);
-	return (ft_vsnprintf(str, (size_t)result + 1, format, ap));
+	result = ft_vsnprintf(str, (size_t)result + 1, format, ap);
+	va_end(ap_save);
+	return (result);
 }
 
-size_t	copy_as_is(size_t size, const char **fmt, char **buf)
+ssize_t	copy_as_is(size_t size, const char **fmt, char **buf)
 {
 	const char *const	ptr = ft_strchrnul((*fmt), '%');
-	const size_t		i = ptr - (*fmt);
+	const size_t		i = (size_t)(ptr - *fmt);
 	const size_t		desired = MIN(i + FT_TERMINATOR, size);
-	char *const			to_put = ft_strndup((*fmt), i);
 
-	ft_memcpy((*buf), to_put, desired * sizeof(char));
-	free(to_put);
-	(*fmt) = (ptr - 1);
+	ft_memcpy((*buf), *fmt, desired * sizeof(char));
 	if (*buf)
-		(*buf) += desired - 1;
-	return (i);
+		(*buf) += desired - 1 * (desired > 1);
+	(*fmt) = (ptr - 1);
+	return ((ssize_t)i);
 }
 
-int	ft_vsnprintf_internal(char *(*str)[2], size_t size, const t_snprintf_f *lut,
-							va_list *ap)
+static inline __attribute__((always_inline))
+t_printf_var	handle_spec(va_list *const ap, t_printf_var v, ssize_t *ret)
 {
-	size_t			ret;
-	register char	c;
-	char			*buf;
-	const char		*fmt = (*str)[0];
-	char *const		dst = (*str)[1];
+	char	cc;
 
-	buf = dst;
-	ret = 0;
-	c = *fmt;
-	while (c != '\0')
+	cc = v.fmt[1];
+	if (cc == '\0')
 	{
-		if (c != '%')
-		{
-			ret += copy_as_is(size, &fmt, &buf);
-			c = *++fmt;
-			continue ;
-		}
-		c = *++fmt;
-		if (c != '\0' && lut[(u_char) c])
-			ret += lut[(u_char) c](&buf, size - (buf - dst), ap);
-		else
-			fmt--;
-		c = *++fmt;
+		if (v.rem > 0 && v.seek)
+			v.error_flag = FT_ERROR;
+		(*ret)++;
 	}
+	else
+	{
+		if (v.lut[(u_char)cc] != NULL)
+			(*ret) += (ssize_t) v.lut[(u_char)cc](&v.seek, v.rem, ap);
+		else
+		{
+			if (v.seek && v.rem > 0)
+				*v.seek++ = '%';
+			if (v.seek && v.rem > 1)
+				*v.seek++ = cc;
+			(*ret) += 2;
+		}
+		v.fmt++;
+	}
+	return (v);
+}
+
+int	ft_vsnprintf_internal(t_printf_var v, size_t size, va_list *ap)
+{
+	register char	c;
+	ssize_t			ret;
+
+	ret = 0;
+	v.seek = v.buf;
+	c = *v.fmt;
+	while (c != '\0' && v.error_flag != FT_ERROR)
+	{
+		v.rem = size - (v.seek - v.buf);
+		if (c == '%')
+			v = handle_spec(ap, v, &ret);
+		else
+			ret += copy_as_is(v.rem, &v.fmt, &v.seek);
+		v.fmt++;
+		c = *v.fmt;
+	}
+	if (v.error_flag)
+		ret = FT_ERROR;
 	return ((int)ret);
 }
 
-int	ft_vsnprintf(char *str, size_t size, const char *fmt, va_list ap)
+int	ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap)
 {
 	int					ret;
+	size_t				mini_size;
 	va_list				ap_save;
+	t_printf_var		var;
 	static t_snprintf_f	lut[UCHAR_MAX] = {
 	['c'] = ft_snprint_c,
 	['%'] = ft_snprint_percent,
@@ -85,8 +111,12 @@ int	ft_vsnprintf(char *str, size_t size, const char *fmt, va_list ap)
 	['w'] = ft_snprint_w,
 	};
 
+	mini_size = size - (size != 0) * 1;
 	va_copy(ap_save, ap);
-	ret = ft_vsnprintf_internal(&(char *[2]){(char *)fmt, str},
-			size, lut, &ap_save);
+	var = (t_printf_var){.buf = dst, .fmt = fmt, .lut = lut};
+	ret = ft_vsnprintf_internal(var, mini_size, &ap_save);
+	va_end(ap_save);
+	if (size && ret >= 0)
+		dst[MIN(mini_size, (u_int)ret)] = '\0';
 	return (ret);
 }

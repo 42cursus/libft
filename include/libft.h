@@ -61,14 +61,23 @@ void	*ft_memchr(const void *s, int c, size_t n);
 typedef size_t	(*t_printf_f)(int fd, va_list *ap);
 typedef size_t	(*t_snprintf_f)(char **buf, size_t size, va_list *ap);
 
-/* ---------- PRINTF -------------------- */
+typedef struct s_vsnprintf
+{
+	char			*buf;
+	const char		*fmt;
+	char			*seek;
+	int				error_flag;
+	size_t			rem;
+	t_snprintf_f	*lut;
+}	t_printf_var;
+
 int		ft_printf(const char *format, ...);
 int		ft_snprintf(char *str, size_t size, const char *format, ...);
 int		ft_sprintf(char *str, const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_vprintf(const char *fmt, va_list ap);
 int		ft_vdprintf(int fd, const char	*fmt, va_list ap);
-int		ft_vsnprintf(char *str, size_t size, const char *fmt, va_list ap);
+int		ft_vsnprintf(char *dst, size_t size, const char *fmt, va_list ap);
 int		ft_vsprintf(char *str, const char *format, va_list ap);
 
 size_t	ft_print_p(int fd, va_list *ap);
