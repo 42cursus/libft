@@ -12,7 +12,8 @@
 
 #include <unistd.h>
 
-static inline unsigned int	ft_strlen(const char *str)
+static inline __attribute__((always_inline))
+size_t	ft_strlen_loc(const char *str)
 {
 	const char *const	ostr = str;
 
@@ -23,6 +24,6 @@ static inline unsigned int	ft_strlen(const char *str)
 
 void	ft_putstr(const char *str)
 {
-	if (str)
-		write(STDOUT_FILENO, str, ft_strlen(str));
+	if (!str || write(STDOUT_FILENO, str, ft_strlen_loc(str)) == -1)
+		return ;
 }

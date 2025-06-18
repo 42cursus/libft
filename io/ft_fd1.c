@@ -20,7 +20,8 @@ void	ft_putchar_fd(char c, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0)
 		return ;
-	write(fd, &c, 1);
+	if (write(fd, &c, 1) == -1)
+		return ;
 }
 
 /**
@@ -30,7 +31,8 @@ void	ft_putstr_fd(const char *const s, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0 || !s)
 		return ;
-	write(fd, s, ft_strlen(s));
+	if (write(fd, s, ft_strlen(s)) == -1)
+		return ;
 }
 
 /**
@@ -40,8 +42,10 @@ void	ft_putendl_fd(const char *const s, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0 || !s)
 		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	if (write(fd, s, ft_strlen(s)) == -1)
+		return ;
+	if (write(fd, "\n", 1) == -1)
+		return ;
 }
 
 /**
@@ -54,5 +58,6 @@ void	ft_putbyte_fd(const char *const s, size_t nbytes, int fd)
 {
 	if (fd > SHRT_MAX || fd < 0 || !s)
 		return ;
-	write(fd, s, nbytes);
+	if (write(fd, s, nbytes) == -1)
+		return ;
 }

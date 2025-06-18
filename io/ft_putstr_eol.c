@@ -13,11 +13,12 @@
 #include <unistd.h>
 #include "ft_string.h"
 
-void	ft_putstr_eol(char *str, char *eol)
+void	ft_putstr_eol(const char *str, const char *eol)
 {
 	if (!str)
 		return ;
-	write(STDOUT_FILENO, str, ft_strlen(str));
-	if (eol)
-		write(STDOUT_FILENO, eol, ft_strlen(eol));
+	if (write(STDOUT_FILENO, str, ft_strlen(str)) == -1)
+		return ;
+	if (!eol || write(STDOUT_FILENO, eol, ft_strlen(eol)) == 1)
+		return ;
 }
