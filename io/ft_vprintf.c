@@ -23,7 +23,7 @@ int	ft_vprintf(const char *format, va_list ap)
 
 	va_copy(ap_copy, ap);
 	count = ft_vsnprintf(NULL, 0, format, ap_copy);
-	string = (char *) calloc(count + FT_TERMINATOR, sizeof(char));
+	string = (char *) ft_calloc(count + FT_TERMINATOR, sizeof(char));
 	if (string)
 	{
 		ft_vsnprintf(string, count + FT_TERMINATOR, format, ap_copy);
