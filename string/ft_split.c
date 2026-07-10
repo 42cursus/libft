@@ -26,9 +26,10 @@ char	**alloc_memory(const char *(*stack)[2], int sp)
 		result[i] = ft_strndup(stack[i][0], (stack[i][1] - stack[i][0]));
 		if (result[i] == NULL)
 		{
-			while (i-- > 0)
-				free(result[i]);
-			return (free(result[i]), NULL);
+			while (i >= 0)
+				free(result[i--]);
+			free(result);
+			return (NULL);
 		}
 	}
 	result[sp] = NULL;
